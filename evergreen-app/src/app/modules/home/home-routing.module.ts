@@ -10,37 +10,29 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('../dashboard/dashboard-routing.module').then(
-            (m) => m.DashboardRoutingModule
+          import('../dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
           ),
       },
       {
         path: 'patients',
         loadChildren: () =>
-          import('../patients/patients-routing.module').then(
-            (m) => m.PatientsRoutingModule
-          ),
+          import('../patients/patients.module').then((m) => m.PatientsModule),
       },
       {
         path: 'groups',
         loadChildren: () =>
-          import('../groups/groups-routing.module').then(
-            (m) => m.GroupsRoutingModule
-          ),
+          import('../groups/groups.module').then((m) => m.GroupsModule),
       },
       {
         path: 'messages',
         loadChildren: () =>
-          import('../messages/messages-routing.module').then(
-            (m) => m.MessagesRoutingModule
-          ),
+          import('../messages/messages.module').then((m) => m.MessagesModule),
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('../profile/profile-routing.module').then(
-            (m) => m.ProfileRoutingModule
-          ),
+          import('../profile/profile.module').then((m) => m.ProfileModule),
       },
     ],
   },
