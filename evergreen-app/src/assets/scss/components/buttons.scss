@@ -1,0 +1,13 @@
+.btn {
+  height: $btn-height;
+  border-radius: $btn-radius;
+  font-weight: 600;
+  &-primary {
+    background: $color--green;
+    border-color: $color--green;
+    &:hover {
+      background: darken($color--green, 5%);
+      border-color: darken($color--green, 5%);
+    }
+  }
+}

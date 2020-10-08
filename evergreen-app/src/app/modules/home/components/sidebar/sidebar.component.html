@@ -1,0 +1,43 @@
+<div class="sidebar">
+  <div class="sidebar__logo" routerLink="/home">
+    <img src="/assets/images/logo.svg" class="sidebar__logo-img" />
+  </div>
+  <ul class="sidebar__nav">
+    <li
+      class="sidebar__item"
+      routerLink="/home/dashboard"
+      routerLinkActive="sidebar__item--active"
+    >
+      <span class="sidebar__icon sidebar__icon--dashboard"></span>
+      <span class="sidebar__item-title">Dashboard</span>
+    </li>
+    <li
+      class="sidebar__item"
+      routerLink="/home/patients"
+      routerLinkActive="sidebar__item--active"
+    >
+      <span class="sidebar__icon sidebar__icon--patients"></span>
+      <span class="sidebar__item-title">Patients</span>
+    </li>
+    <li
+      class="sidebar__item"
+      routerLink="/home/groups"
+      routerLinkActive="sidebar__item--active"
+    >
+      <span class="sidebar__icon sidebar__icon--groups"></span>
+      <span class="sidebar__item-title">Groups</span>
+    </li>
+    <li
+      class="sidebar__item"
+      routerLink="/home/messages"
+      routerLinkActive="sidebar__item--active"
+    >
+      <span class="sidebar__icon sidebar__icon--messages"></span>
+      <span class="sidebar__item-title">Messages</span>
+    </li>
+  </ul>
+  <div class="sidebar__profile sidebar__item" routerLink="/home/profile">
+    <span class="sidebar__icon sidebar__icon--profile"></span>
+    <span class="sidebar__item-title">Profile</span>
+  </div>
+</div>
