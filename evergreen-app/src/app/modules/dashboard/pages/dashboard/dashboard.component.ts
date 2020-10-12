@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupsService } from 'src/app/core/services/groups.service';
+import { PatientsService } from 'src/app/core/services/patients.service';
+import { Group } from 'src/app/shared/models/group.model';
+import { Patient } from 'src/app/shared/models/patient.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,61 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  patients = [
-  {
-    name: 'WILLIAMS, Jonatan Simson',
-    number: 'NHS 123 567 766',
-    gender: 'Male',
-    born: '14-Jul-1956 (39y)'
-  },
-  {
-    name: 'WILLIAMS, Jonatan Simson',
-    number: 'NHS 123 567 766',
-    gender: 'Male',
-    born: '14-Jul-1956 (39y)'
-  },
-  {
-    name: 'WILLIAMS, Jonatan Simson',
-    number: 'NHS 123 567 766',
-    gender: 'Male',
-    born: '14-Jul-1956 (39y)'
-  },
-  {
-    name: 'WILLIAMS, Jonatan Simson',
-    number: 'NHS 123 567 766',
-    gender: 'Male',
-    born: '14-Jul-1956 (39y)'
+  patients: Patient[] = [];
+  groups: Group[] = [];
+
+  constructor(
+    private patientsService: PatientsService,
+    private groupsService: GroupsService) {
+    this.patients = this.patientsService.getPatients();
+    this.groups = this.groupsService.getGroups();
   }
-]
-
-
-  groups = [
-    {
-      name: 'Female Diabetics',
-      gender: 'Female',
-      age: 30,
-      medication: 'Metmorfin',
-      hapiness: '8-10'
-    },
-    {
-      name: 'Female Diabetics',
-      gender: 'Female',
-      age: 26,
-      medication: 'Metmorfin',
-      hapiness: '8-10'
-    },
-    {
-      name: 'Female Diabetics',
-      gender: 'Female',
-      age: 30,
-      medication: 'Metmorfin',
-      hapiness: '8-10'
-    }
-]
-
-  constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
+
+
+

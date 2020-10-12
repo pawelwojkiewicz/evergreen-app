@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Patient } from 'src/app/shared/models/patient.model';
 
 @Component({
   selector: 'app-patient-card',
@@ -8,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PatientCardComponent implements OnInit {
 
-@Input() patient: {name: string,number: string, gender: string, born: string}
+@Input() patient: Patient[];
 @Input() i:number;
 
   constructor(private router: Router) {

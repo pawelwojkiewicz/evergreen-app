@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GroupsService } from 'src/app/core/services/groups.service';
+import { Group } from 'src/app/shared/models/group.model';
 
 @Component({
   selector: 'app-group',
@@ -7,9 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GroupComponent implements OnInit {
 
-  @Input() group: {  name: string, gender: string, age: number, medication: string, hapiness: string}
+  @Input() group: Group[];
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }
