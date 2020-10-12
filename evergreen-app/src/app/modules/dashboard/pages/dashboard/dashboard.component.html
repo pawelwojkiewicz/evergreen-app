@@ -7,7 +7,7 @@
                 <div class="d-flex flex-wrap">
                   <app-patient-card [patient]="patient" [i]="i"  *ngFor="let patient of patients; let i = index"></app-patient-card>
                 </div>
-                <button class="btn btn-secondary btn-icon mt-5 ml-auto">
+                <button routerLink="/patients" class="btn btn-secondary btn-icon mt-5 ml-auto">
                   See all patients
                   <i class="fas fa-arrow-right"></i>
                 </button>
