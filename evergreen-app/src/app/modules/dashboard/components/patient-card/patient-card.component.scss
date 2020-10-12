@@ -1,0 +1,19 @@
+@import 'src/scss/abstracts';
+
+:host {
+  margin-right: 32px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.patient-card {
+  padding: 24px;
+  width: 180px;
+  box-shadow: $box-shadow;
+  border-radius: $card-radius;
+  &__group {
+    display: flex;
+    flex-direction: column;
+    border-bottom: $border--light;
+  }
+}

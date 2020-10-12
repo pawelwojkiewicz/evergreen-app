@@ -17,22 +17,9 @@ const routes: Routes = [
       {
         path: 'patients',
         loadChildren: () =>
-          import('../patients/patients.module').then((m) => m.PatientsModule),
-      },
-      {
-        path: 'groups',
-        loadChildren: () =>
-          import('../groups/groups.module').then((m) => m.GroupsModule),
-      },
-      {
-        path: 'messages',
-        loadChildren: () =>
-          import('../messages/messages.module').then((m) => m.MessagesModule),
-      },
-      {
-        path: 'profile',
-        loadChildren: () =>
-          import('../profile/profile.module').then((m) => m.ProfileModule),
+          import('../patients/patients.module').then(
+            (m) => m.PatientsModule
+          ),
       },
     ],
   },

@@ -1,0 +1,14 @@
+<div class="patient-card">
+    <div class="patient-card__group mb-3">
+        <span class="text--display-4 mb-3 text--semibold">{{patient.name}}</span>
+        <span class="text--display-1 mb-3 text--light-1">{{patient.number}}</span>
+    </div>
+    <div class="patient-card__group mb-3">
+        <span class="text--display-1 text-uppercase text--light-1">Gender</span>
+        <span class="text--display-3 mb-2 text--semibold">{{patient.gender}}</span>
+        <span class="text--display-1 text-uppercase text--light-1">Born</span>
+        <span class="text--display-3 mb-3 text--semibold">{{patient.born}}</span>
+    </div>
+    <button type="button" class="btn btn-link" (click)="onPatientDetail()">See details</button>
+</div>
+

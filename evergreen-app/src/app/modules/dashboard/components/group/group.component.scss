@@ -1,0 +1,26 @@
+@import 'src/scss/abstracts';
+
+.group {
+  padding: 10px 24px;
+  height: 72px;
+  box-shadow: $box-shadow;
+  border-radius: $card-radius;
+  display: block;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  &__title {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 140px;
+    border-right: $border--light;
+  }
+  &__arrow {
+    color: $color--green;
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+  }
+}

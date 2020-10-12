@@ -24,7 +24,9 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/assets/scss/styles.scss"],
+            "styles": [
+              "src/scss/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +85,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/scss/styles.scss"],
             "scripts": []
           }
         },

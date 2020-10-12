@@ -1,0 +1,29 @@
+// colors
+$color--base: #454545;
+$color--green: #39b54a;
+$color--gray: #f0f0f0;
+$color--gray-100: #939393;
+$color--gray-200: #706f6f;
+$color--gray-300: #ececec;
+$color--gray-400: #929191;
+$color--white: #ffffff;
+
+// font-weight
+$font-weight--regular: 400;
+$font-weight--semibold: 600;
+
+// radius
+$btn-radius: 100px;
+$input-radius: 8px;
+$card-radius: 10px;
+
+// heights
+$btn-height: 48px;
+
+//borders
+
+$border--light: 1px solid $color--gray-300;
+
+//box-shadows
+
+$box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.08), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 4px 0 rgba(0, 0, 0, 0.12);
