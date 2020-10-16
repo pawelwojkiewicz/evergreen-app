@@ -6,13 +6,13 @@
   </div>
   <ul class="sidebar__nav">
     <li class="sidebar__item"
-        routerLink="dashboard"
+        [routerLink]="dashboardRoute"
         routerLinkActive="sidebar__item--active">
       <span class="sidebar__icon sidebar__icon--dashboard"></span>
       <span class="sidebar__item-title">Dashboard</span>
     </li>
     <li class="sidebar__item"
-        routerLink="patients"
+        [routerLink]="patientsRoute"
         routerLinkActive="sidebar__item--active">
       <span class="sidebar__icon sidebar__icon--patients"></span>
       <span class="sidebar__item-title">Patients</span>
