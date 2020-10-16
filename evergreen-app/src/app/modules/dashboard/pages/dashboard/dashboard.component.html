@@ -10,7 +10,7 @@
                             *ngFor="let patient of patients; let i = index">
           </app-patient-card>
         </div>
-        <button routerLink="/patients"
+        <button [routerLink]="['./', 'patients']"
                 class="btn btn-secondary btn-icon mt-5 ml-auto"> See all patients <i
              class="fas fa-arrow-right"></i>
         </button>
