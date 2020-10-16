@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from 'src/app/core/services/groups.service';
 import { PatientsService } from 'src/app/core/services/patients.service';
-import { Group } from 'src/app/shared/models/group.model';
-import { Patient } from 'src/app/shared/models/patient.model';
+import { Patient } from 'src/app/shared/types/patient.type';
+import { Group } from 'src/app/shared/types/group.type';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Group } from 'src/app/shared/models/group.model';
+import { Group } from 'src/app/shared/types/group.type';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +29,10 @@ export class GroupsService {
       medication: 'Metmorfin',
       hapiness: '8-10'
     }
-]
+  ];
 
 
-getGroups() {
-  return [...this.groups];
+  getGroups(): Group[] {
+    return [...this.groups];
+  }
 }
- }

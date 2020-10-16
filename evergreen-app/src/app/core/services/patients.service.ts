@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Patient } from 'src/app/shared/models/patient.model';
+import { Patient } from 'src/app/shared/types/patient.type';
 
 @Injectable({
   providedIn: 'root'
@@ -33,14 +33,14 @@ export class PatientsService {
       gender: 'Female',
       born: '14-Mar-1966 (49y)'
     }
-  ]
+  ];
 
 
-  getPatients() {
+  getPatients(): Patient[] {
     return [...this.patients];
   }
 
-  getPatientDetail(i:number) {
+  getPatientDetail(i: number): Patient {
     return [...this.patients][i];
   }
 }
