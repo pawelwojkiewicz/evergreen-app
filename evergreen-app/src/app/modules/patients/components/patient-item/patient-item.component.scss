@@ -1,10 +1,11 @@
 @import 'src/scss/abstracts';
 
-.group {
+.patient-item {
   padding: 10px 24px;
   height: 72px;
   box-shadow: $box-shadow;
   border-radius: $card-radius;
+  display: block;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -12,22 +13,13 @@
 
   &__title {
     height: 100%;
+    display: flex;
+    align-items: center;
     border-right: $border--light;
   }
 
   &__col {
     flex: 1;
     margin: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  &__arrow {
-    color: $color--green;
-    position: absolute;
-    right: 30px;
-    cursor: pointer;
   }
 }

@@ -1,9 +1,9 @@
 <section class="section dashboard">
   <div class="container-fluid">
+    <h1 class="h--display-2 section__title">Dashboard</h1>
+    <h2 class="h--display-1 section__subtitle">Last visited patients</h2>
     <div class="row">
       <div class="col-12">
-        <h1 class="h--display-2 dashboard__title">Dashboard</h1>
-        <h2 class="h--display-1 dashboard__subtitle">Last visited patients</h2>
         <div class="d-flex flex-wrap">
           <app-patient-card [patient]="patient"
                             [i]="i"
@@ -20,7 +20,7 @@
       <div class="col-12">
         <h2 class="h--display-1 dashboard__subtitle">Last groups</h2>
         <app-group [group]="group"
-                   *ngFor="let group of groups"></app-group>
+                   *ngFor="let group of groups | slice:0:4"></app-group>
         <button class="btn btn-secondary btn-icon mt-5 ml-auto"> See all groups <i
              class="fas fa-arrow-right"></i>
         </button>
