@@ -18,10 +18,10 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <h2 class="h--display-1 dashboard__subtitle">Last groups</h2>
-        <app-group [group]="group"
-                   *ngFor="let group of groups | slice:0:4"></app-group>
-        <button class="btn btn-secondary btn-icon mt-5 ml-auto"> See all groups <i
+        <h2 class="h--display-1 section__subtitle">Last groups</h2>
+        <app-group [group]="group" (routeEvent)="goToGroupDetail($event,i)"
+                   *ngFor="let group of groups | slice:0:4; let i=index"></app-group>
+        <button [routerLink]="groupsRoute" class="btn btn-secondary btn-icon mt-5 ml-auto"> See all groups <i
              class="fas fa-arrow-right"></i>
         </button>
       </div>

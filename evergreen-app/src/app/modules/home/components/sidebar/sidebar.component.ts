@@ -10,6 +10,7 @@ export class SidebarComponent implements OnInit {
 
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
+  groupsRoute = ['/', routePath.home, routePath.groups];
 
   constructor() { }
 

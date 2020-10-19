@@ -21,6 +21,13 @@ const routes: Routes = [
             (m) => m.PatientsModule
           ),
       },
+      {
+        path: 'groups',
+        loadChildren: () =>
+          import('../groups/groups.module').then(
+            (m) => m.GroupsModule
+          ),
+      },
     ],
   },
 ];
