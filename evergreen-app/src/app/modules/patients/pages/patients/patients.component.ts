@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { PatientsService } from 'src/app/core/services/patients.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Patient } from 'src/app/shared/types/patient.type';
@@ -21,10 +21,12 @@ export class PatientsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
 
-  constructor(private patientsService: PatientsService) {
-    this.patients = this.patientsService.getPatients();
-    this.dataSource = new MatTableDataSource(this.patients);
-  }
+  constructor(
+    private patientsService: PatientsService
+    ) {
+        this.patients = this.patientsService.getPatients();
+        this.dataSource = new MatTableDataSource(this.patients);
+      }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

@@ -9,6 +9,7 @@
         <span class="text--display-1 text-uppercase text--light-1">Born</span>
         <span class="text--display-3 mb-3 text--semibold">{{patient.born}}</span>
     </div>
-    <button type="button" class="btn btn-link" (click)="onPatientDetail()">See details</button>
+    <a class="btn btn-link"
+    [routerLink]="['/home/patients/',patient.id]" >See details</a>
 </div>
 

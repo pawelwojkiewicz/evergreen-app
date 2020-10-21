@@ -10,7 +10,10 @@ import { Patient } from 'src/app/shared/types/patient.type';
 })
 export class PatientDetailComponent implements OnInit {
 
-  constructor(private active: ActivatedRoute, private patientsService: PatientsService) { }
+  constructor (
+    private active: ActivatedRoute,
+    private patientsService: PatientsService
+  ) { }
 
   patient: Patient;
 

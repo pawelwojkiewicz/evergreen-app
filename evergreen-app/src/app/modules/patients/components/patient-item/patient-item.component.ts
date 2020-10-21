@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
@@ -6,13 +6,6 @@ import { Patient } from 'src/app/shared/types/patient.type';
   templateUrl: './patient-item.component.html',
   styleUrls: ['./patient-item.component.scss']
 })
-export class PatientItemComponent implements OnInit {
-
+export class PatientItemComponent{
   @Input() patient: Patient;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

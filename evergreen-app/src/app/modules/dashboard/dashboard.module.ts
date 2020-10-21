@@ -8,6 +8,6 @@ import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
   declarations: [DashboardComponent, PatientCardComponent, GroupComponent],
-  imports: [CommonModule, DashboardRoutingModule,],
+  imports: [CommonModule, DashboardRoutingModule, ],
 })
 export class DashboardModule {}

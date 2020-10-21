@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
@@ -7,19 +6,6 @@ import { Patient } from 'src/app/shared/types/patient.type';
   templateUrl: './patient-card.component.html',
   styleUrls: ['./patient-card.component.scss']
 })
-export class PatientCardComponent implements OnInit {
-
+export class PatientCardComponent {
   @Input() patient: Patient;
-  @Input() i: number;
-
-  constructor(private router: Router) {
-  }
-
-  ngOnInit(): void {
-
-  }
-
-  onPatientDetail(): void {
-    this.router.navigate(['home/patients', this.i]);
-  }
 }

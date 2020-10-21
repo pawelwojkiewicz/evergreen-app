@@ -1,26 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
-import { routePath } from 'src/app/core/core/constans/route.path';
 
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.scss']
 })
-export class GroupComponent implements OnInit {
+export class GroupComponent {
 
   @Input() group: Group;
 
-  @Output() routeEvent = new EventEmitter<string[]>();
+  @Output() detailsClick = new EventEmitter<string[]>();
 
-
-  groupsRoute = ['/', routePath.home, routePath.groups]
-
-  ngOnInit(): void {
+  goToGroupDetail(): void {
+    this.detailsClick.emit();
   }
-
-  goToGroupDetail() {
-    this.routeEvent.emit(this.groupsRoute);
-  }
-
 }
