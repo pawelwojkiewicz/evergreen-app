@@ -1,4 +1,6 @@
-<p>{{patient.name}}</p>
-<p>{{patient.gender}}</p>
-<p>{{patient.number}}</p>
-<p>{{patient.born}}</p>
+<div *ngIf="(patient$ | async) as patient">
+  <p>{{patient.name}}</p>
+  <p>{{patient.gender}}</p>
+  <p>{{patient.number}}</p>
+  <p>{{patient.born}}</p>
+</div>

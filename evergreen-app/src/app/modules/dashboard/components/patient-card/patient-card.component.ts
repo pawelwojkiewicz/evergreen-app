@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { routePath } from 'src/app/core/constans/route.path';
 import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
@@ -8,4 +9,12 @@ import { Patient } from 'src/app/shared/types/patient.type';
 })
 export class PatientCardComponent {
   @Input() patient: Patient;
+
+  patientDetailRoute = ['/', routePath.home, routePath.patients];
+
+  getDetailsRoute(): any[] {
+    return [...this.patientDetailRoute, this.patient.id];
+  }
 }
+
+

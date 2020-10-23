@@ -1,7 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GroupsService } from 'src/app/core/services/groups.service';
 import { Group } from 'src/app/shared/types/group.type';
+import { map, subscribeOn } from 'rxjs/operators';
+import { from, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-group-item',
@@ -11,16 +13,12 @@ import { Group } from 'src/app/shared/types/group.type';
 export class GroupItemComponent {
 
   group: Group;
+  group$: Observable<Group>;
 
-  constructor (
+  constructor(
     private groupService: GroupsService,
     private active: ActivatedRoute
   ) {
-      this.active.params.subscribe(
-        (params: Params) => {
-          const i = params.id;
-          this.group = this.groupService.getGroups()[i];
-        }
-      );
+    this.group$ = this.active.params.pipe(map(params => this.groupService.getGroup(params.id)));
     }
-}
+ }

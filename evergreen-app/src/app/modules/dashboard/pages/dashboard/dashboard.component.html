@@ -20,7 +20,7 @@
     <div class="row">
       <div class="col-12">
         <h2 class="h--display-1 section__subtitle">Last groups</h2>
-        <app-group [group]="group" (detailsClick)="goToGroupDetail(i)"
+        <app-group [group]="group" (detailsClick)="goToGroupDetail(group.id)"
                    *ngFor="let group of groups | slice:0:4; let i=index"></app-group>
         <div class="d-flex justify-content-end mt-5">
           <a [routerLink]="groupsRoute" class="btn btn-secondary btn-icon mt-5 ml-auto"> See all groups <i

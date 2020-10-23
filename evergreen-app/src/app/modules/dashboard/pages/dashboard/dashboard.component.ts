@@ -18,17 +18,17 @@ export class DashboardComponent {
   patientsRoute = ['/', routePath.home, routePath.patients];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
-  constructor (
+  constructor(
     private patientsService: PatientsService,
     private groupsService: GroupsService,
-    private router: Router
+    private router: Router,
   ) {
     this.patients = this.patientsService.getPatients();
     this.groups = this.groupsService.getGroups();
   }
 
-  goToGroupDetail(i: number) {
-    this.router.navigate(['/', routePath.home, routePath.groups, i]);
+  goToGroupDetail(id: number): void {
+    this.router.navigate(['/', routePath.home, routePath.groups, id]);
   }
 }
 
