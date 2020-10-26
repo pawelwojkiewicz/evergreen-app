@@ -14,7 +14,7 @@ export class PatientDetailComponent {
   patient: Patient;
   patient$: Observable<Patient>;
 
-  constructor (
+  constructor(
     private active: ActivatedRoute,
     private patientsService: PatientsService
   ) {

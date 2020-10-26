@@ -4,7 +4,9 @@
       <app-sidebar></app-sidebar>
     </div>
     <div class="col-auto flex-fill vh-100 overflow-auto">
+      <div (click)="onCloseOverlay()" class="overlay" *ngIf="isOpen"></div>
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+

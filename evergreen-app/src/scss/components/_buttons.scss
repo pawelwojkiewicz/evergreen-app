@@ -1,6 +1,12 @@
 .btn {
   border-radius: $btn-radius;
   font-weight: $font-weight--semibold;
+  color: $color--white;
+  padding: 8px 20px;
+  &:hover {
+    color: $color--white;
+    text-decoration: none;
+  }
   &-primary {
     height: $btn-height;
     background: $color--green;

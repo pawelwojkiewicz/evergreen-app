@@ -1,75 +1,106 @@
 @import 'src/scss/abstracts';
-:host {
+@import 'src/scss/vendors/bootstrap-helpers';
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
-  display: block;
-  width: 100px;
+  width: $sidebar-width;
   background-color: $color--green;
-  padding: 30px 0;
-  .sidebar {
+  padding: 15px 0;
+  position: fixed;
+  transform: translateX(-100%);
+  transition: 0.2s ease-in;
+  z-index: 2;
+  @include media-breakpoint-up(md) {
+    position: relative;
+    padding: 30px 0;
+    transform: translateX(0);
+  }
+  &--open {
+    transform: translateX(0);
+  }
+  &__trigger {
+    background: none;
+    border: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    &:focus {
+      outline: none;
+    }
+    &-icon {
+      font-size: 30px;
+      color: $color--green;
+    }
+  }
+  &__logo {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+  &__icon {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    &--dashboard {
+      background-image: url('/assets/images/dashboard.svg');
+    }
+    &--patients {
+      background-image: url('/assets/images/patients.svg');
+    }
+    &--groups {
+      background-image: url('/assets/images/groups.svg');
+    }
+    &--messages {
+      background-image: url('/assets/images/messages.svg');
+    }
+    &--profile {
+      background-image: url('/assets/images/profile.svg');
+    }
+  }
+  &__nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  &__item {
+    color: $color--white;
+    width: 100%;
+    height: $sidebar-width;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    &__logo {
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-    }
-    &__icon {
-      margin-bottom: 10px;
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background-size: cover;
-      &--dashboard {
-        background-image: url('/assets/images/dashboard.svg');
-      }
-      &--patients {
-        background-image: url('/assets/images/patients.svg');
-      }
-      &--groups {
-        background-image: url('/assets/images/groups.svg');
-      }
-      &--messages {
-        background-image: url('/assets/images/messages.svg');
-      }
-      &--profile {
-        background-image: url('/assets/images/profile.svg');
+    align-items: center;
+    justify-content: center;
+    &-title {
+      font-size: 14px;
+      @include media-breakpoint-up(md) {
+        font-size: 16px;
       }
     }
-    &__nav {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    &__item {
-      color: $color--white;
-      width: 100px;
-      height: 100px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      &--active {
-        outline: none;
+    &--active {
+      outline: none;
+      background: $color--white;
+      color: $color--green;
+      .sidebar__icon {
+        filter: invert(55%) sepia(91%) saturate(375%) hue-rotate(77deg) brightness(90%) contrast(86%);
+      }
+      &:hover {
         background: $color--white;
-        color: $color--green;
-        .sidebar__icon {
-          filter: invert(55%) sepia(91%) saturate(375%) hue-rotate(77deg) brightness(90%) contrast(86%);
-        }
-        &:hover {
-          background: $color--white;
-        }
       }
-      &:not(.sidebar__item--active) {
-        &:hover {
-          background: #6bc878;
-        }
+    }
+    &:not(.sidebar__item--active) {
+      &:hover {
+        background: #6bc878;
       }
-      &:focus {
-        outline: none;
-      }
+    }
+    &:focus {
+      outline: none;
     }
   }
 }

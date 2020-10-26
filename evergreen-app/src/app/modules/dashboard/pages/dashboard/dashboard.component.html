@@ -1,9 +1,9 @@
 <section class="section dashboard">
   <div class="container-fluid">
-    <h1 class="h--display-2 section__title">Dashboard</h1>
-    <h2 class="h--display-1 section__subtitle">Last visited patients</h2>
-    <div class="row">
-      <div class="col-12">
+    <div class="row justify-content-between">
+      <div class="col-auto">
+        <h1 class="h--display-2 section__title">Dashboard</h1>
+        <h2 class="h--display-1 section__subtitle">Last visited patients</h2>
         <div class="d-flex flex-wrap">
           <app-patient-card [patient]="patient"
                             *ngFor="let patient of patients | slice:0:4">
@@ -15,10 +15,6 @@
               class="fas fa-arrow-right"></i>
           </a>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
         <h2 class="h--display-1 section__subtitle">Last groups</h2>
         <app-group [group]="group" (detailsClick)="goToGroupDetail(group.id)"
                    *ngFor="let group of groups | slice:0:4; let i=index"></app-group>
@@ -27,6 +23,9 @@
               class="fas fa-arrow-right"></i>
           </a>
         </div>
+      </div>
+      <div class="col-auto">
+        <app-notifications></app-notifications>
       </div>
     </div>
   </div>

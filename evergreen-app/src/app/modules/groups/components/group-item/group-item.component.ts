@@ -11,8 +11,6 @@ import { from, Observable, Subscription } from 'rxjs';
   styleUrls: ['./group-item.component.scss']
 })
 export class GroupItemComponent {
-
-  group: Group;
   group$: Observable<Group>;
 
   constructor(

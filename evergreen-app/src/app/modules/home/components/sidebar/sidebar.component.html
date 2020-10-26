@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" [ngClass]="{'sidebar--open': isOpen}">
   <div class="sidebar__logo"
        routerLink="/home">
     <img src="/assets/images/logo.svg"
@@ -32,3 +32,9 @@
     <span class="sidebar__item-title">Profile</span>
   </div>
 </div>
+<button type="button" class="sidebar__trigger d-md-none">
+  <span (click)="onSidebarTrigger()" class="sidebar__trigger-icon material-icons">
+    menu
+  </span>
+</button>
+
