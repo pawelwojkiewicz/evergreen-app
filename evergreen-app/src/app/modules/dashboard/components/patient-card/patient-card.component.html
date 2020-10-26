@@ -1,4 +1,5 @@
 <div class="patient-card">
+  <div>
     <div class="patient-card__group mb-3">
         <span class="text--display-4 mb-3 text--semibold">{{patient.name}}</span>
         <span class="text--display-1 mb-3 text--light-1">{{patient.number}}</span>
@@ -9,7 +10,8 @@
         <span class="text--display-1 text-uppercase text--light-1">Born</span>
         <span class="text--display-3 mb-3 text--semibold">{{patient.born}}</span>
     </div>
-    <a class="btn btn-link"
+  </div>
+    <a class="patient-card__btn btn btn-link"
     [routerLink]="getDetailsRoute()" >See details</a>
 </div>
 

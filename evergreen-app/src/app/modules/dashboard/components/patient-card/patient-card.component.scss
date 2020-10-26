@@ -1,19 +1,35 @@
 @import 'src/scss/abstracts';
+@import 'src/scss/vendors/bootstrap-helpers';
 
 :host {
-  margin-right: 32px;
-  &:last-child {
-    margin-right: 0;
-  }
-}
-.patient-card {
+  width: 48%;
+  margin: 2% 0;
   padding: 24px;
-  width: 180px;
   box-shadow: $box-shadow;
   border-radius: $card-radius;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 32px;
+    width: 180px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.patient-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   &__group {
     display: flex;
     flex-direction: column;
-    border-bottom: $border--light;
+  }
+  &__btn {
+    padding-top: 20px;
+    border-radius: 0;
+    border-top: $border--light;
+    display: block;
   }
 }
