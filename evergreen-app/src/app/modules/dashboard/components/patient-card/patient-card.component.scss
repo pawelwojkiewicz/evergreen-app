@@ -2,6 +2,7 @@
 @import 'src/scss/vendors/bootstrap-helpers';
 
 :host {
+  background: $color--white;
   width: 48%;
   margin: 2% 0;
   padding: 24px;

@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs';
-import { Component, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { routePath } from 'src/app/core/constans/route.path';
+import { NavigationStart, Router } from '@angular/router';
 import { SidebarService } from 'src/app/core/services/sidebar.service';
 
 @Component({
@@ -8,30 +9,37 @@ import { SidebarService } from 'src/app/core/services/sidebar.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnDestroy{
+export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
   closeSubscribe: Subscription;
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
   groupsRoute = ['/', routePath.home, routePath.groups];
+  routerSubscribtion: Subscription;
 
   constructor(
+    private router: Router,
     private sidebarService: SidebarService,
   ){
-    this.closeSubscribe = this.sidebarService.isCloseSubject.subscribe(
-      () => {
-        this.isOpen = false;
+    this.routerSubscribtion = this.router.events.subscribe(
+      event => {
+        if (event instanceof NavigationStart) {
+          this.isOpen = false;
+        }
       }
     );
   }
 
-  onSidebarTrigger(): void {
+  onOpenSidebar(): void {
     this.isOpen = true;
-    this.sidebarService.isOpenSubject.next();
+  }
+
+  onOpenNotifications(): void {
+    this.sidebarService.openNotifications.next();
   }
 
   ngOnDestroy(): void {
-    this.closeSubscribe.unsubscribe();
+    this.routerSubscribtion.unsubscribe();
   }
 }

@@ -1,13 +1,10 @@
-import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
-
-  isOpenSubject =  new Subject<boolean>();
-  isCloseSubject = new Subject<boolean>();
-
+  openNotifications = new Subject();
   constructor() { }
 }

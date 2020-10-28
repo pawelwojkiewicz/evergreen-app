@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
-import { element } from 'protractor';
 import { Patient } from 'src/app/shared/types/patient.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientsService {
-
-  constructor() { }
-
   private patients: Patient[] = [
     {
       id: 1,

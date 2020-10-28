@@ -32,9 +32,19 @@
     <span class="sidebar__item-title">Profile</span>
   </div>
 </div>
-<button type="button" class="sidebar__trigger d-md-none">
-  <span (click)="onSidebarTrigger()" class="sidebar__trigger-icon material-icons">
-    menu
-  </span>
-</button>
+<div class="sidebar__mobile-nav d-md-none d-flex justify-content-between align-items-center">
+  <button (click)="onOpenSidebar()" type="button" class="sidebar__trigger">
+    <span class="sidebar__trigger-icon material-icons">
+      menu
+    </span>
+  </button>
+  <button (click)="onOpenNotifications()" type="button" class="sidebar__notifications d-flex align-items-center">
+    <span class="material-icons">
+      notifications
+      </span>
+  </button>
+</div>
+
+<div *ngIf="isOpen" (click)="isOpen = false" class="sidebar__overlay"></div>
+
 

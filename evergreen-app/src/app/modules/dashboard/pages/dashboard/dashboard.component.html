@@ -1,7 +1,7 @@
 <section class="section dashboard">
   <div class="container-fluid">
-    <div class="row justify-content-between">
-      <div class="col-auto">
+    <div class="row justify-content-between flex-nowrap">
+      <div class="col-auto flex-fill">
         <h1 class="h--display-2 section__title">Dashboard</h1>
         <h2 class="h--display-1 section__subtitle">Last visited patients</h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
@@ -15,11 +15,13 @@
               class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <h2 class="h--display-1 section__subtitle">Last groups</h2>
+        <h2 class="h--display-1 section__subtitle mt-5">Last groups</h2>
+        <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
         <app-group [group]="group" (detailsClick)="goToGroupDetail(group.id)"
                    *ngFor="let group of groups | slice:0:4; let i=index"></app-group>
-        <div class="d-flex justify-content-end mt-5">
-          <a [routerLink]="groupsRoute" class="btn btn-secondary btn-icon mt-5 ml-auto"> See all groups <i
+        </div>
+        <div class="d-flex justify-content-md-end mt-5">
+          <a [routerLink]="groupsRoute" class="btn btn-secondary btn-icon ml-md-auto"> See all groups <i
               class="fas fa-arrow-right"></i>
           </a>
         </div>
