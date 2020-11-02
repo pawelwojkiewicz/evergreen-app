@@ -8,19 +8,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
-export class NotificationsComponent implements OnInit{
+export class NotificationsComponent implements OnInit {
   isOpen = false;
   notifications: Notification[];
 
   constructor(
     private sidebarService: SidebarService,
     private notificationService: NotificationsService
-    ){
+  ) {
     this.sidebarService.openNotifications.subscribe(
-      () => {
-        this.isOpen = !this.isOpen;
+      (isOpen: boolean) => {
+        this.isOpen = isOpen;
       }
     );
+  }
+
+  onCloseNotifications(): void {
+    this.isOpen = false;
+    this.sidebarService.closeNotifications.next(false);
   }
 
   ngOnInit(): void {

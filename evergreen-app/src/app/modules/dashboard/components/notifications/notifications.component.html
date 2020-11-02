@@ -1,37 +1,28 @@
-
-<div class="notifications" [ngClass]="{'notifications--open': isOpen}">
+<div class="notifications"
+     [ngClass]="{'notifications--open': isOpen}">
+  <button type="button"
+          class="notifications__close-btn"
+          (click)="onCloseNotifications()">
+    <span class="notifications__close-icon material-icons"> close </span>
+  </button>
   <div class="d-flex justify-content-between">
     <h2 class="h--display-1 section__subtitle">Recent received messages</h2>
     <span>2 unread</span>
   </div>
-  <div *ngFor="let notification of notifications" class="notifications__item">
+  <div *ngFor="let notification of notifications"
+       class="notifications__item">
     <div class="notifications__user d-flex justify-content-between mb-3">
       <span>{{notification.user}}</span>
       <span>unread</span>
     </div>
     <div class="notifications__date d-flex">
       <span class="d-flex align-items-center mr-4">
-        <span class="material-icons mr-2">
-          date_range
-          </span>
-          {{notification.date}}
-      </span>
+        <span class="material-icons mr-2"> date_range </span> {{notification.date}} </span>
       <span class="d-flex align-items-center">
-        <span class="material-icons mr-2">
-          schedule
-          </span>
-          {{notification.hour}}
-      </span>
+        <span class="material-icons mr-2"> schedule </span> {{notification.hour}} </span>
     </div>
-    <p class="mt-3">
-      {{notification.message}}
-    </p>
+    <p class="mt-3"> {{notification.message}} </p>
     <span class="ml-auto d-flex align-items-center justify-content-end">
-      <span class="material-icons mr-2">
-        reply
-        </span>
-      Reply
-    </span>
+      <span class="material-icons mr-2"> reply </span> Reply </span>
   </div>
 </div>
-

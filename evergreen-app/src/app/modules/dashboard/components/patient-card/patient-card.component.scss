@@ -6,12 +6,13 @@
   width: 48%;
   margin: 2% 0;
   padding: 24px;
-  box-shadow: $box-shadow;
+  box-shadow: $box-shadow--tile;
   border-radius: $card-radius;
 
   @include media-breakpoint-up(md) {
     margin-right: 32px;
     width: 180px;
+
     &:last-child {
       margin-right: 0;
     }
@@ -23,10 +24,12 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
   &__group {
     display: flex;
     flex-direction: column;
   }
+
   &__btn {
     padding-top: 20px;
     border-radius: 0;

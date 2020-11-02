@@ -1,4 +1,5 @@
-<div class="sidebar" [ngClass]="{'sidebar--open': isOpen}">
+<div class="sidebar"
+     [ngClass]="{'sidebar--open': isOpen}">
   <div class="sidebar__logo"
        routerLink="/home">
     <img src="/assets/images/logo.svg"
@@ -17,7 +18,9 @@
       <span class="sidebar__icon sidebar__icon--patients"></span>
       <span class="sidebar__item-title">Patients</span>
     </li>
-    <li class="sidebar__item" [routerLink]="groupsRoute"  routerLinkActive="sidebar__item--active">
+    <li class="sidebar__item"
+        [routerLink]="groupsRoute"
+        routerLinkActive="sidebar__item--active">
       <span class="sidebar__icon sidebar__icon--groups"></span>
       <span class="sidebar__item-title">Groups</span>
     </li>
@@ -32,19 +35,18 @@
     <span class="sidebar__item-title">Profile</span>
   </div>
 </div>
-<div class="sidebar__mobile-nav d-md-none d-flex justify-content-between align-items-center">
-  <button (click)="onOpenSidebar()" type="button" class="sidebar__trigger">
-    <span class="sidebar__trigger-icon material-icons">
-      menu
-    </span>
+<div class="sidebar__mobile-nav d-xl-none d-flex justify-content-between align-items-center">
+  <button (click)="onOpenSidebar()"
+          type="button"
+          class="sidebar__trigger">
+    <span class="sidebar__trigger-icon material-icons"> menu </span>
   </button>
-  <button (click)="onOpenNotifications()" type="button" class="sidebar__notifications d-flex align-items-center">
-    <span class="material-icons">
-      notifications
-      </span>
+  <button (click)="onOpenNotifications()"
+          type="button"
+          class="sidebar__notifications d-flex align-items-center">
+    <span class="material-icons"> notifications </span>
   </button>
 </div>
-
-<div *ngIf="isOpen" (click)="isOpen = false" class="sidebar__overlay"></div>
-
-
+<div *ngIf="isOverlay"
+     (click)="onOverlay()"
+     class="sidebar__overlay"></div>

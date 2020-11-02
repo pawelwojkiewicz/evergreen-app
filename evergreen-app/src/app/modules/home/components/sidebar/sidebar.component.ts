@@ -12,6 +12,7 @@ import { SidebarService } from 'src/app/core/services/sidebar.service';
 export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
+  isOverlay = false;
   closeSubscribe: Subscription;
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
@@ -21,7 +22,7 @@ export class SidebarComponent implements OnDestroy {
   constructor(
     private router: Router,
     private sidebarService: SidebarService,
-  ){
+  ) {
     this.routerSubscribtion = this.router.events.subscribe(
       event => {
         if (event instanceof NavigationStart) {
@@ -29,14 +30,27 @@ export class SidebarComponent implements OnDestroy {
         }
       }
     );
+    this.sidebarService.closeNotifications.subscribe(
+      (isClose: boolean) => {
+        this.isOverlay = isClose;
+      }
+    )
   }
 
   onOpenSidebar(): void {
+    this.isOverlay = true;
     this.isOpen = true;
   }
 
   onOpenNotifications(): void {
-    this.sidebarService.openNotifications.next();
+    this.isOverlay = true;
+    this.sidebarService.openNotifications.next(true);
+  }
+
+  onOverlay(): void {
+    this.isOpen = false;
+    this.isOverlay = false;
+    this.sidebarService.openNotifications.next(false);
   }
 
   ngOnDestroy(): void {

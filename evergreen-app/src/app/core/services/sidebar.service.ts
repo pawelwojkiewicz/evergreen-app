@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
   openNotifications = new Subject();
+  closeNotifications = new Subject();
   constructor() { }
 }

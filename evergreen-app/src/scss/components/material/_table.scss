@@ -6,6 +6,7 @@
   tr {
     display: flex;
     background: $color--white;
+
     &:first-child {
       background: $color--gray-500;
     }
@@ -18,7 +19,7 @@
     &.mat-row {
       padding: 10px 24px;
       height: 72px;
-      box-shadow: $box-shadow;
+      box-shadow: $box-shadow--tile;
       border-radius: $card-radius;
       margin-bottom: 16px;
       display: flex;
@@ -55,6 +56,7 @@
 
 .mat-paginator {
   background: $color--gray-500;
+
   .mat-paginator-page-size {
     display: none;
   }
