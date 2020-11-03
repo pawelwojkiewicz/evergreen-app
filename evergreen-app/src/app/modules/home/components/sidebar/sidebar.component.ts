@@ -13,6 +13,7 @@ export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
   isOverlay = false;
+  showNotificationsButton = true;
 
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
@@ -30,6 +31,8 @@ export class SidebarComponent implements OnDestroy {
       event => {
         if (event instanceof NavigationStart) {
           this.isOpen = false;
+          this.isOverlay = false;
+          this.showNotificationsButton = !this.showNotificationsButton;
         }
       }
     );
@@ -37,7 +40,7 @@ export class SidebarComponent implements OnDestroy {
       (isOpen: boolean) => {
         this.isOverlay = isOpen;
       }
-    )
+    );
   }
 
   onOpenSidebar(): void {
