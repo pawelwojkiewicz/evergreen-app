@@ -13,11 +13,14 @@ export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
   isOverlay = false;
-  closeSubscribe: Subscription;
+
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
   groupsRoute = ['/', routePath.home, routePath.groups];
+
   routerSubscribtion: Subscription;
+  closeSubscribtion: Subscription;
+
 
   constructor(
     private router: Router,
@@ -30,27 +33,26 @@ export class SidebarComponent implements OnDestroy {
         }
       }
     );
-    this.sidebarService.closeNotifications.subscribe(
-      (isClose: boolean) => {
-        this.isOverlay = isClose;
+    this.closeSubscribtion = this.sidebarService.isOpen.subscribe(
+      (isOpen: boolean) => {
+        this.isOverlay = isOpen;
       }
     )
   }
 
   onOpenSidebar(): void {
-    this.isOverlay = true;
     this.isOpen = true;
+    this.isOverlay = true;
   }
 
   onOpenNotifications(): void {
-    this.isOverlay = true;
-    this.sidebarService.openNotifications.next(true);
+    this.sidebarService.openPanel();
   }
 
   onOverlay(): void {
     this.isOpen = false;
     this.isOverlay = false;
-    this.sidebarService.openNotifications.next(false);
+    this.sidebarService.closePanel();
   }
 
   ngOnDestroy(): void {

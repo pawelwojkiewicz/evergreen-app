@@ -5,7 +5,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-  openNotifications = new Subject();
-  closeNotifications = new Subject();
+  isOpen = new Subject();
   constructor() { }
+
+  openPanel(): void {
+    this.isOpen.next(true);
+  }
+
+  closePanel(): void {
+    this.isOpen.next(false);
+  }
 }
