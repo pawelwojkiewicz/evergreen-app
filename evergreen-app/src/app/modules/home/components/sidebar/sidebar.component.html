@@ -41,12 +41,13 @@
           class="sidebar__trigger">
     <span class="sidebar__trigger-icon material-icons"> menu </span>
   </button>
-  <button *ngIf="showNotificationsButton" (click)="onOpenNotifications()"
+  <button *ngIf="showNotificationsButton"
+          (click)="onOpenNotifications()"
           type="button"
           class="sidebar__notifications d-flex align-items-center">
     <span class="material-icons"> notifications </span>
   </button>
 </div>
-<div *ngIf="isOverlay"
+<div *ngIf="isOpen"
      (click)="onOverlay()"
-     class="sidebar__overlay"></div>
+     class="overlay"></div>

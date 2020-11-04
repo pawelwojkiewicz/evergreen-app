@@ -12,7 +12,6 @@ import { SidebarService } from 'src/app/core/services/sidebar.service';
 export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
-  isOverlay = false;
   showNotificationsButton = true;
 
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
@@ -20,7 +19,6 @@ export class SidebarComponent implements OnDestroy {
   groupsRoute = ['/', routePath.home, routePath.groups];
 
   routerSubscribtion: Subscription;
-  closeSubscribtion: Subscription;
 
 
   constructor(
@@ -31,35 +29,25 @@ export class SidebarComponent implements OnDestroy {
       event => {
         if (event instanceof NavigationStart) {
           this.isOpen = false;
-          this.isOverlay = false;
           this.showNotificationsButton = !this.showNotificationsButton;
         }
-      }
-    );
-    this.closeSubscribtion = this.sidebarService.isOpen.subscribe(
-      (isOpen: boolean) => {
-        this.isOverlay = isOpen;
       }
     );
   }
 
   onOpenSidebar(): void {
     this.isOpen = true;
-    this.isOverlay = true;
   }
 
   onOpenNotifications(): void {
-    this.sidebarService.openPanel();
+    this.sidebarService.onNotificationOpen();
   }
 
   onOverlay(): void {
     this.isOpen = false;
-    this.isOverlay = false;
-    this.sidebarService.closePanel();
   }
 
   ngOnDestroy(): void {
     this.routerSubscribtion.unsubscribe();
-    this.closeSubscribtion.unsubscribe();
   }
 }
