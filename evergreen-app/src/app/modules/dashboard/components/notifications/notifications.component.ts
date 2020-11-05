@@ -10,7 +10,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit {
-  isOpen$: Observable<boolean> = this.sidebarService.notificationOpen;
+  isOpen$: Observable<boolean> = this.sidebarService.notificationOpen$;
   notifications: Notification[];
 
   constructor(

@@ -5,13 +5,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-  notificationOpen = new Subject<boolean>();
+
+  private notifivationOpenSubject =  new Subject<boolean>();
+  public notificationOpen$ = this.notifivationOpenSubject.asObservable();
+
   constructor() { }
 
   onNotificationOpen(): void {
-    this.notificationOpen.next(true);
+    this.notifivationOpenSubject.next(true);
   }
   onNotificationClose(): void {
-    this.notificationOpen.next(false);
+    this.notifivationOpenSubject.next(false);
   }
 }
