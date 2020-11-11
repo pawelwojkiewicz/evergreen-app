@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PatientDetailComponent } from './patient-detail.component';
+import { RouterModule } from '@angular/router';
 
 describe('PatientDetailComponent', () => {
   let component: PatientDetailComponent;
@@ -8,9 +9,12 @@ describe('PatientDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PatientDetailComponent ]
+      declarations: [PatientDetailComponent],
+      imports: [
+        RouterModule.forRoot([]),
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

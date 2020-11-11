@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { routePath } from 'src/app/core/constans/route.path';
 import { Patient } from 'src/app/shared/types/patient.type';
 

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupItemComponent } from './group-item.component';
+import { RouterModule } from '@angular/router';
 
 describe('GroupItemComponent', () => {
   let component: GroupItemComponent;
@@ -8,9 +9,12 @@ describe('GroupItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroupItemComponent ]
+      declarations: [GroupItemComponent],
+      imports: [
+        RouterModule.forRoot([]),
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
