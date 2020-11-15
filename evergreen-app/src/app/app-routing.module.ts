@@ -12,10 +12,13 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./modules/login/login.module').then((m) => m.LoginModule),
+      import('./modules/login/login.module').then((m) => m.LoginModule)
   },
-  { path: 'groups', loadChildren: () => import('./modules/groups/groups.module').then(m => m.GroupsModule) },
-
+  {
+    path: 'groups',
+    loadChildren: () =>
+      import('./modules/groups/groups.module').then(m => m.GroupsModule)
+  },
 ];
 
 @NgModule({
