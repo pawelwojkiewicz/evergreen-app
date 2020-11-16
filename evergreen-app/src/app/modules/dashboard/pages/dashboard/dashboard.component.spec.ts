@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
 import { PatientsService } from 'src/app/core/services/patients.service';
@@ -111,6 +111,25 @@ describe('DashboardComponent', () => {
     const groupsList = fixture.nativeElement.querySelectorAll('app-group');
     expect(groupsList.length).toBe(1);
   });
+  it('create 20 items but show only 4', waitForAsync(() => {
+    const patients: Patient[] = [];
+
+    for (let i = 0; i < 20; i++) {
+      const patient = {
+        id: 1,
+        name: 'test',
+        number: 'test123',
+        gender: 'male',
+        born: '12-13',
+        accessLevel: 'Health Status'
+      };
+      patients.push(patient);
+    }
+    component.patients = patients;
+    fixture.detectChanges();
+    const patientsItems = fixture.nativeElement.querySelectorAll('app-patient-card');
+    expect(patientsItems.length).toEqual(4);
+  }));
   // it(`should redirect to 'home/patients' after click 'See all patients' anchor`, () => {
   //   links[0].click();
   //   fixture.detectChanges();
