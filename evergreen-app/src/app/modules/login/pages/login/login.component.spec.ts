@@ -100,21 +100,20 @@ describe('LoginComponent', () => {
   }));
 
   it('password field validity', waitForAsync(() => {
-    const password = component.signForm.controls.password;
+    const password = component.signForm.get('password');
     let errors: any = {};
     errors = password.errors || {};
     expect(password.valid).toBeFalsy();
-    expect(errors.required).toBeTruthy();
+    expect(password.hasError('required')).toBeTruthy();
 
     password.setValue('test');
     expect(password.valid).toBeFalsy();
-    expect(component.signForm.get('password').hasError('minlength')).toBeTruthy();
+    expect(password.hasError('minlength')).toBeTruthy();
 
     password.setValue('test1234');
     expect(password.valid).toBeTruthy();
-    expect(component.signForm.get('password').hasError('minlength')).toBeFalsy();
+    expect(password.hasError('minlength')).toBeFalsy();
   }));
-
 
   it(`should direct to home page when form is valid`, waitForAsync(() => {
     expect(component.signForm.valid).toBeFalsy();
@@ -123,10 +122,10 @@ describe('LoginComponent', () => {
     expect(component.signForm.valid).toBeTruthy();
     btn.click();
     fixture.whenStable().then(
-        () => {
-          expect(location.path()).toBe('/home');
-        }
-      );
+      () => {
+        expect(location.path()).toBe('/home');
+      }
+    );
   }));
 });
 
