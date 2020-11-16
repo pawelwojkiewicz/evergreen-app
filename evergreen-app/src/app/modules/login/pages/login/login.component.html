@@ -6,26 +6,33 @@
              class="login__logo"
              alt="Evergreen life logo" />
         <h1 class="login__heading">{{title}}</h1>
-        <div class="form">
+        <form class="form" [formGroup]="signForm" (ngSubmit)="onSubmit()" >
           <div class="form-group">
             <label for="email">Email address</label>
             <input type="email"
                    class="form-control w-100"
                    id="email"
                    aria-describedby="emailHelp"
-                   placeholder="Enter email address" />
+                   placeholder="Enter email address"
+                   formControlName="email"
+                   required
+                    />
+            <span *ngIf="signForm.get('email').invalid && signForm.get('email').touched" class="invalid-feedback">Please put correct e-mail.</span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input type="password"
                    class="form-control w-100"
                    id="password"
-                   placeholder="Enter password" />
+                   placeholder="Enter password"
+                   formControlName="password"
+                   required />
+            <span *ngIf="signForm.get('password').invalid && signForm.get('password').touched" class="invalid-feedback">Please put correct password.</span>
+              <span *ngIf="signForm.get('password').hasError('minlength')" class="invalid-feedback">Password must be at least 8 characters.</span>
           </div>
           <button type="submit"
-                  routerLink="/home"
                   class="btn btn-primary login__btn w-100"> Log in </button>
-        </div>
+        </form>
         <a>Forgotten your login details?</a>
       </div>
     </div>

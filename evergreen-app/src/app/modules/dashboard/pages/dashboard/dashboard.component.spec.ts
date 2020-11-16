@@ -15,8 +15,7 @@ describe('DashboardComponent', () => {
 
   // We create let's for our query element
   let h1: HTMLHeadingElement;
-  let patientsTitle: HTMLHeadingElement;
-  let groupsTitle: HTMLHeadingElement;
+  let h2: HTMLHeadingElement;
   let links: HTMLLinkElement;
   let location: Location;
 
@@ -50,8 +49,7 @@ describe('DashboardComponent', () => {
 
     // We query elements which we need
     h1 = fixture.nativeElement.querySelector('h1');
-    patientsTitle = fixture.nativeElement.querySelector('.dashboard__patient-title');
-    groupsTitle = fixture.nativeElement.querySelector('.dashboard__group-title');
+    h2 = fixture.nativeElement.querySelectorAll('h2');
     links = fixture.nativeElement.querySelectorAll('a');
 
     fixture.detectChanges();
@@ -69,11 +67,11 @@ describe('DashboardComponent', () => {
   });
   it(`should contain an h2 tag with 'Last visited patients' text`, () => {
     fixture.detectChanges();
-    expect(patientsTitle.innerText).toEqual('Last visited patients');
+    expect(h2[0].innerText).toEqual('Last visited patients');
   });
   it(`should contain an h2 tag with 'Last groups' text`, () => {
     fixture.detectChanges();
-    expect(groupsTitle.innerText).toEqual('Last groups');
+    expect(h2[1].innerText).toEqual('Last groups');
   });
   it(`should contain an anchor tag with 'See all patients' text`, () => {
     fixture.detectChanges();

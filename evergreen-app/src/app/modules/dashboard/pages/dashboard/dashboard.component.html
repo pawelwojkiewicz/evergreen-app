@@ -3,7 +3,7 @@
     <div class="row justify-content-between flex-nowrap">
       <div class="col-auto flex-fill dashboard__container">
         <h1 class="h--display-2 section__title">Dashboard</h1>
-        <h2 class="h--display-1 section__subtitle dashboard__patient-title">Last visited patients
+        <h2 class="h--display-1 section__subtitle">Last visited patients
         </h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
           <app-patient-card [patient]="patient"
@@ -15,7 +15,7 @@
              class="btn btn-secondary btn-icon"> See all patients <i class="fas fa-arrow-right"></i>
           </a>
         </div>
-        <h2 class="h--display-1 section__subtitle mt-5 dashboard__group-title">Last groups</h2>
+        <h2 class="h--display-1 section__subtitle mt-5">Last groups</h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
           <app-group [group]="group"
                      (detailsClick)="goToGroupDetail(group.id)"

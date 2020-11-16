@@ -27,7 +27,4 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it(`should be at '/home'`, () => {
-    expect(location.path()).toBe('');
-  });
 });

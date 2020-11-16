@@ -10,11 +10,24 @@
     background-color: $color--gray;
     border-color: $color--gray;
     box-shadow: none;
+    outline: none;
+  }
+  &.ng-touched {
+    &.ng-valid {
+      border: 2px solid $color--green;
+    }
+    &.ng-invalid {
+      border: 2px solid $color--red;
+    }
   }
 }
 
 .form-group {
   margin-bottom: 40px;
+}
+
+.invalid-feedback {
+  display: block;
 }
 
 label {

@@ -3,6 +3,7 @@ import { LoginComponent } from './login.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,10 +22,10 @@ describe('LoginComponent', () => {
       // as component we use empty dummy component which we declare in bottom.
       imports: [
         RouterTestingModule.withRoutes(
-          [
-            { path: 'home', component: DummyComponent }
-          ]
-        )
+          [{ path: 'home', component: DummyComponent }]
+        ),
+        ReactiveFormsModule,
+        FormsModule
       ]
     })
       .compileComponents();
@@ -33,6 +34,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
     fixture.detectChanges();
     location = TestBed.inject(Location);
     h1 = fixture.nativeElement.querySelector('h1');
@@ -76,20 +78,56 @@ describe('LoginComponent', () => {
     expect(link.innerText).toEqual('Forgotten your login details?');
   }));
 
-  it(`should be at '/' path before click Log in button`, () => {
-    expect(location.path()).toBe('');
-  });
+  it('form should be invalid when empty', waitForAsync(() => {
+    expect(component.signForm.valid).toBeFalsy();
+  }));
 
-  it(`should redirect to 'home' after click log in button`, () => {
+  it('email field validity', waitForAsync(() => {
+    const email = component.signForm.controls.email;
+    let errors: any = {};
+    errors = email.errors || {};
+    expect(email.valid).toBeFalsy();
+    expect(errors.required).toBeTruthy();
+
+    email.setValue('test');
+    expect(email.valid).toBeFalsy();
+    expect(errors.required).toBeTruthy();
+
+    email.setValue('test@wp.pl');
+    errors = email.errors || {};
+    expect(email.valid).toBeTruthy();
+    expect(errors.required).toBeFalsy();
+  }));
+
+  it('password field validity', waitForAsync(() => {
+    const password = component.signForm.controls.password;
+    let errors: any = {};
+    errors = password.errors || {};
+    expect(password.valid).toBeFalsy();
+    expect(errors.required).toBeTruthy();
+
+    password.setValue('test');
+    expect(password.valid).toBeFalsy();
+    expect(component.signForm.get('password').hasError('minlength')).toBeTruthy();
+
+    password.setValue('test1234');
+    expect(password.valid).toBeTruthy();
+    expect(component.signForm.get('password').hasError('minlength')).toBeFalsy();
+  }));
+
+
+  it(`should direct to home page when form is valid`, waitForAsync(() => {
+    expect(component.signForm.valid).toBeFalsy();
+    component.signForm.controls.email.setValue('test@wp.pl');
+    component.signForm.controls.password.setValue('test1234');
+    expect(component.signForm.valid).toBeTruthy();
     btn.click();
-    fixture.detectChanges();
     fixture.whenStable().then(
-      () => {
-        expect(location.path()).toBe('/home');
-      }
-    );
-  });
-
+        () => {
+          expect(location.path()).toBe('/home');
+        }
+      );
+  }));
 });
 
 
