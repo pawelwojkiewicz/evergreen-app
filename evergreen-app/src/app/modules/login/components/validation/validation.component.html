@@ -1,0 +1,6 @@
+<ng-content *ngIf="control.get('email').invalid && control.get('email').touched"
+            select="[emailInvalid]"></ng-content>
+<ng-content *ngIf="control.get('password').invalid && control.get('password').touched"
+            select="[passwordInvalid]"></ng-content>
+<ng-content *ngIf="control.get('password').hasError('minlength')"
+            select="[passwordLength]"></ng-content>

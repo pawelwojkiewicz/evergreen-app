@@ -6,7 +6,9 @@
              class="login__logo"
              alt="Evergreen life logo" />
         <h1 class="login__heading">{{title}}</h1>
-        <form class="form" [formGroup]="signForm" (ngSubmit)="onSubmit()" >
+        <form class="form"
+              [formGroup]="signForm"
+              (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="email">Email address</label>
             <input type="email"
@@ -15,9 +17,11 @@
                    aria-describedby="emailHelp"
                    placeholder="Enter email address"
                    formControlName="email"
-                   required
-                    />
-            <span *ngIf="signForm.get('email').invalid && signForm.get('email').touched" class="invalid-feedback">Please put correct e-mail.</span>
+                   required />
+            <app-validation [control]="signForm">
+              <span class="invalid-feedback"
+                    emailInvalid>Please put correct e-mail. </span>
+            </app-validation>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -27,8 +31,12 @@
                    placeholder="Enter password"
                    formControlName="password"
                    required />
-            <span *ngIf="signForm.get('password').invalid && signForm.get('password').touched" class="invalid-feedback">Please put correct password.</span>
-              <span *ngIf="signForm.get('password').hasError('minlength')" class="invalid-feedback">Password must be at least 8 characters.</span>
+            <app-validation [control]="signForm">
+              <span class="invalid-feedback"
+                    passwordInvalid>Please put correct password. </span>
+              <span class="invalid-feedback"
+                    passwordLength> The password is too short.</span>
+            </app-validation>
           </div>
           <button type="submit"
                   class="btn btn-primary login__btn w-100"> Log in </button>
