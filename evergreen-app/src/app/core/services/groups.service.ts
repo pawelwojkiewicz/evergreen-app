@@ -9,9 +9,6 @@ export class GroupsService {
 
   constructor() { }
 
-  private genderValueSubject = new Subject<string>();
-  public genderValue$ = this.genderValueSubject.asObservable();
-
   private groups: Group[] = [
     {
       id: 1,
@@ -110,9 +107,5 @@ export class GroupsService {
   getGroup(id: number): Group {
     const groupElement = this.groups.find(group => group.id === +id);
     return groupElement;
-  }
-
-  filterGender(gender: string): void {
-    this.genderValueSubject.next(gender);
   }
 }

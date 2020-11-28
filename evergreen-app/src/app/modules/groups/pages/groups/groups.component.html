@@ -8,22 +8,21 @@
         <mat-select [(ngModel)]="selectedValue">
           <mat-option>None</mat-option>
           <mat-option *ngFor="let gender of genders"
-                      [value]="gender.value"
-                      (click)="selectValue(gender.value)"> {{gender.value}} </mat-option>
+                      [value]="gender.value"> {{gender.value}} </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <ul class="groups__selected-filters">
       <h2 *ngIf="selectedValue"
           class="h--display-1 section__subtitle">Selected filters:</h2>
-      <li *ngIf="(genderValue$ | async) as genderValue"
-          class="groups__selected-filters-item"> {{genderValue}} <span (click)="deleteFilter()"
+      <li *ngIf="selectedValue"
+          class="groups__selected-filters-item"> {{selectedValue}} <span (click)="deleteFilter()"
               class="groups__selected-filters-icon material-icons"> clear </span>
       </li>
     </ul>
     <app-group-item (click)="goToGroupDetail(group.id)"
                     [group]="group"
-                    *ngFor="let group of groups | filter: (genderValue$ | async)">
+                    *ngFor="let group of groups | filter: selectedValue">
     </app-group-item>
   </div>
 </section>

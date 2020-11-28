@@ -16,7 +16,6 @@ export class GroupsComponent {
     { value: 'male' },
     { value: 'female' },
   ];
-  genderValue$: Observable<string> = this.groupService.genderValue$;
   groupsRoute = ['/', routePath.home, routePath.groups];
   selectedValue: string;
 
@@ -28,16 +27,7 @@ export class GroupsComponent {
     this.router.navigate([...this.groupsRoute, id]);
   }
 
-  selectValue(gender: string): void {
-    if (this.selectedValue) {
-      this.groupService.filterGender(gender);
-    } else {
-      console.log('None');
-    }
-  }
-
   deleteFilter(): void {
-    this.groupService.filterGender('');
     this.selectedValue = '';
   }
 }
