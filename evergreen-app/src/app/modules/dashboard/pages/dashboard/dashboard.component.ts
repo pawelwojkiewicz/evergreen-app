@@ -28,7 +28,7 @@ export class DashboardComponent {
   }
 
   goToGroupDetail(id: number): void {
-    this.router.navigate(['/', routePath.home, routePath.groups, id]);
+    this.router.navigate([...this.groupsRoute, id]);
   }
 }
 

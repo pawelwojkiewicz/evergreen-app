@@ -1,4 +1,4 @@
-import { Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { GroupsService } from 'src/app/core/services/groups.service';
 import { Group } from 'src/app/shared/types/group.type';
@@ -11,12 +11,5 @@ import { from, Observable, Subscription } from 'rxjs';
   styleUrls: ['./group-item.component.scss']
 })
 export class GroupItemComponent {
-  group$: Observable<Group>;
-
-  constructor(
-    private groupService: GroupsService,
-    private active: ActivatedRoute
-  ) {
-    this.group$ = this.active.params.pipe(map(params => this.groupService.getGroup(params.id)));
-    }
- }
+  @Input() group: Group;
+}

@@ -18,7 +18,7 @@
                    placeholder="Enter email address"
                    formControlName="email"
                    required />
-            <app-validation [control]="signForm">
+            <app-validation [control]="signForm.get('email')">
               <span class="invalid-feedback"
                     emailInvalid>Please put correct e-mail. </span>
             </app-validation>
@@ -31,7 +31,7 @@
                    placeholder="Enter password"
                    formControlName="password"
                    required />
-            <app-validation [control]="signForm">
+            <app-validation [control]="signForm.get('password')">
               <span class="invalid-feedback"
                     passwordInvalid>Please put correct password. </span>
               <span class="invalid-feedback"

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,11 +8,15 @@ import { Group } from 'src/app/shared/types/group.type';
 export class GroupsService {
 
   constructor() { }
+
+  private genderValueSubject = new Subject<string>();
+  public genderValue$ = this.genderValueSubject.asObservable();
+
   private groups: Group[] = [
     {
       id: 1,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -19,15 +24,15 @@ export class GroupsService {
     {
       id: 2,
       name: 'Roberts family',
-      gender: 'Female',
+      gender: 'female',
       age: 26,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
     {
       id: 3,
-      name: 'Female Diabetics',
-      gender: 'Female',
+      name: 'Male Diabetics',
+      gender: 'male',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -35,7 +40,7 @@ export class GroupsService {
     {
       id: 4,
       name: 'Bury',
-      gender: 'Female',
+      gender: 'female',
       age: 16,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -43,7 +48,7 @@ export class GroupsService {
     {
       id: 5,
       name: 'Male Diabetics',
-      gender: 'Male',
+      gender: 'male',
       age: 32,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -51,7 +56,7 @@ export class GroupsService {
     {
       id: 6,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 42,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -59,7 +64,7 @@ export class GroupsService {
     {
       id: 7,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -67,7 +72,7 @@ export class GroupsService {
     {
       id: 8,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -75,15 +80,15 @@ export class GroupsService {
     {
       id: 9,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
     {
       id: 10,
-      name: 'Female Diabetics',
-      gender: 'Female',
+      name: 'Male Diabetics',
+      gender: 'male',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -91,7 +96,7 @@ export class GroupsService {
     {
       id: 11,
       name: 'Female Diabetics',
-      gender: 'Female',
+      gender: 'female',
       age: 30,
       medication: 'Metmorfin',
       hapiness: '8-10'
@@ -105,5 +110,9 @@ export class GroupsService {
   getGroup(id: number): Group {
     const groupElement = this.groups.find(group => group.id === +id);
     return groupElement;
+  }
+
+  filterGender(gender: string): void {
+    this.genderValueSubject.next(gender);
   }
 }

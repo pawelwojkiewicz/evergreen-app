@@ -1,8 +1,23 @@
-<div *ngIf="(group$ | async) as group">
-  <p>{{group.name}}</p>
-  <p>{{group.gender}}</p>
-  <p>{{group.age}}</p>
-  <p>{{group.medication}}</p>
-  <p>{{group.hapiness}}</p>
+<div *ngIf="group"
+     class="group">
+  <div class="group__title group__col">
+    <span class=" text--display-3 mr-md-4 text--semibold">{{group.name}}</span>
+  </div>
+  <div class="group__col">
+    <span class="text--display-1 text--light-2">Gender:</span>
+    <span class="text--display-3 text--semibold"> {{group.gender}}</span>
+  </div>
+  <div class="group__col">
+    <span class="text--display-1 text--light-2">Age:</span>
+    <span class="text--display-3 text--semibold"> {{group.age}}</span>
+  </div>
+  <div class="group__col">
+    <span class="text--display-1 text--light-2">Medication:</span>
+    <span class="text--display-3 text--semibold"> {{group.medication}}</span>
+  </div>
+  <div class="group__col">
+    <span class="text--display-1 text--light-2">Happiness score:</span>
+    <span class="text--display-3 text--semibold"> {{group.hapiness}}</span>
+  </div>
+  <i class="fas fa-arrow-right group__arrow"></i>
 </div>
-

@@ -4,13 +4,19 @@ import { CommonModule } from '@angular/common';
 import { GroupsRoutingModule } from './groups-routing.module';
 import { GroupsComponent } from './pages/groups/groups.component';
 import { GroupItemComponent } from './components/group-item/group-item.component';
+import { GroupDetailComponent } from './pages/group-detail/group-detail.component';
+import { MaterialModule } from '../material/material.module';
+import { FilterPipe } from '../../shared/pipes/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [GroupsComponent, GroupItemComponent],
+  declarations: [GroupsComponent, GroupItemComponent, GroupDetailComponent, FilterPipe],
   imports: [
     CommonModule,
-    GroupsRoutingModule
+    GroupsRoutingModule,
+    MaterialModule,
+    FormsModule
   ]
 })
 export class GroupsModule { }

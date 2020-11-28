@@ -1,0 +1,23 @@
+@import 'src/scss/abstracts';
+@import 'src/scss/vendors/bootstrap-helpers';
+
+:host {
+  display: block;
+  width: 48%;
+  margin: 2% 0;
+  padding: 10px 24px;
+  box-shadow: $box-shadow--tile;
+  border-radius: $card-radius;
+  margin-bottom: 16px;
+  position: relative;
+  background: $color--white;
+
+  @include media-breakpoint-up(md) {
+    width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color--gray-300;
+  }
+}
