@@ -3,27 +3,44 @@
     <h1 class="h--display-2 section__title">Groups</h1>
     <h2 class="h--display-1 section__subtitle">Filters</h2>
     <div class="groups__filters">
-      <mat-form-field appearance="fill">
-        <mat-label>Gender</mat-label>
-        <mat-select [(ngModel)]="selectedValue">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let gender of genders"
-                      [value]="gender.value"
-                      (click)="selectValue(gender.value)"> {{gender.value}} </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="groups__filters-item">
+        <mat-form-field appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select [(ngModel)]="selectedGender">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let gender of genders"
+                        [value]="gender.value"
+                        (click)="selectGender(gender.value)"> {{gender.value}} </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="groups__filters-item groups__filters-item--column">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button name="selectAge"
+                            ngDefaultControl
+                            [(ngModel)]="selectedAge"
+                            (click)="selectAge(age.value)"
+                            *ngFor="let age of ages"
+                            [value]="age.value">{{age.value}} years old</mat-radio-button>
+        </mat-radio-group>
+      </div>
     </div>
     <ul class="groups__selected-filters">
-      <h2 *ngIf="selectedValue"
+      <h2 *ngIf="selectedGender"
           class="h--display-1 section__subtitle">Selected filters:</h2>
       <li *ngIf="(genderValue$ | async) as genderValue"
-          class="groups__selected-filters-item"> {{genderValue}} <span (click)="deleteFilter()"
+          class="groups__selected-filters-item"> {{genderValue}} <span
+              (click)="deleteGenderFilter()"
+              class="groups__selected-filters-icon material-icons"> clear </span>
+      </li>
+      <li *ngIf="(ageValue$ | async) as ageValue"
+          class="groups__selected-filters-item"> {{ageValue}} <span (click)="deleteAgeFilter()"
               class="groups__selected-filters-icon material-icons"> clear </span>
       </li>
     </ul>
     <app-group-item (click)="goToGroupDetail(group.id)"
                     [group]="group"
-                    *ngFor="let group of groups | filter: (genderValue$ | async)">
+                    *ngFor="let group of groups | filterGender: (genderValue$ | async) | filterAge : (ageValue$ | async)">
     </app-group-item>
   </div>
 </section>

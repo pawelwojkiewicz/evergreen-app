@@ -1,6 +1,23 @@
 @import 'src/scss/abstracts';
 
 .groups {
+  &__filters {
+    display: flex;
+    align-items: center;
+
+    &-item {
+      margin-right: 20px;
+
+      &--column {
+        .mat-radio-group {
+          display: flex;
+          flex-direction: column;
+        }
+
+      }
+    }
+  }
+
   &__selected-filters {
     list-style: none;
     padding: 10px;
@@ -10,6 +27,7 @@
       border: 2px solid $color--green;
       border-radius: 5px;
       padding: 5px 10px;
+      margin-right: 10px;
       display: inline-flex;
       align-items: center;
     }

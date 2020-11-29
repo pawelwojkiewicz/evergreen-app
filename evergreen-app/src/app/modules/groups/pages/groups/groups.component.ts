@@ -16,9 +16,16 @@ export class GroupsComponent {
     { value: 'male' },
     { value: 'female' },
   ];
+  ages = [
+    { value: '0-18' },
+    { value: '18-50' },
+    { value: '50-70' }
+  ];
   genderValue$: Observable<string> = this.groupService.genderValue$;
+  ageValue$: Observable<string> = this.groupService.ageValue$;
   groupsRoute = ['/', routePath.home, routePath.groups];
-  selectedValue: string;
+  selectedGender: string;
+  selectedAge: string;
 
   constructor(private groupService: GroupsService, private router: Router) {
     this.groups = groupService.getGroups();
@@ -28,16 +35,21 @@ export class GroupsComponent {
     this.router.navigate([...this.groupsRoute, id]);
   }
 
-  selectValue(gender: string): void {
-    if (this.selectedValue) {
-      this.groupService.filterGender(gender);
-    } else {
-      console.log('None');
-    }
+  selectGender(gender: string): void {
+    this.groupService.filterGender(gender);
   }
 
-  deleteFilter(): void {
+  selectAge(age: string): void {
+    this.groupService.filterAge(age);
+  }
+
+  deleteGenderFilter(): void {
     this.groupService.filterGender('');
-    this.selectedValue = '';
+    this.selectedGender = '';
+  }
+
+  deleteAgeFilter(): void {
+    this.groupService.filterAge('');
+    this.selectedAge = '';
   }
 }
