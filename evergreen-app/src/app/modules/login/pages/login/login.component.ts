@@ -12,16 +12,16 @@ export class LoginComponent implements OnInit {
   signForm: FormGroup;
   title = 'Log in as a health professional';
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.signForm = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
+      password: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
     });
   }
 
-  onSubmit(): void   {
+  onSubmit(): void {
     if (this.signForm.valid) {
       this.router.navigate(['/', routePath.home]);
     } else {

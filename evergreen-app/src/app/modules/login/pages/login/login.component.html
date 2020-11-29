@@ -19,8 +19,8 @@
                    formControlName="email"
                    required />
             <app-validation [control]="signForm.get('email')">
-              <span class="invalid-feedback"
-                    emailInvalid>Please put correct e-mail. </span>
+              <span email
+                    class="invalid-feedback">Please put correct e-mail. </span>
             </app-validation>
           </div>
           <div class="form-group">
@@ -32,10 +32,8 @@
                    formControlName="password"
                    required />
             <app-validation [control]="signForm.get('password')">
-              <span class="invalid-feedback"
-                    passwordInvalid>Please put correct password. </span>
-              <span class="invalid-feedback"
-                    passwordLength> The password is too short.</span>
+              <span minlength
+                    class="invalid-feedback"> The password is too short.</span>
             </app-validation>
           </div>
           <button type="submit"

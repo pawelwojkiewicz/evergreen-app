@@ -3,38 +3,43 @@
     <h1 class="h--display-2 section__title">Groups</h1>
     <h2 class="h--display-1 section__subtitle">Filters</h2>
     <div class="groups__filters">
-      <div class="groups__filters-item">
-        <mat-form-field appearance="fill">
-          <mat-label>Gender</mat-label>
-          <mat-select [(ngModel)]="selectedGender">
-            <mat-option>None</mat-option>
-            <mat-option *ngFor="let gender of genders"
-                        [value]="gender.value"
-                        (click)="selectGender(gender.value)"> {{gender.value}} </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="groups__filters-item groups__filters-item--column">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button name="selectAge"
-                            ngDefaultControl
-                            [(ngModel)]="selectedAge"
-                            (click)="selectAge(age.value)"
-                            *ngFor="let age of ages"
-                            [value]="age.value">{{age.value}} years old</mat-radio-button>
-        </mat-radio-group>
-      </div>
+      <form #form="ngForm">
+        <div class="groups__filters-item">
+          <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select ngModel
+                        [(ngModel)]="selectedGender"
+                        name="gender">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let gender of genders"
+                          [value]="gender.value"
+                          (click)="selectGender(gender.value)"> {{gender.value}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="groups__filters-item groups__filters-item--column">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button ngModel
+                              name="age"
+                              ngDefaultControl
+                              [(ngModel)]="selectedAge"
+                              (click)="selectAge(age.value)"
+                              *ngFor="let age of ages"
+                              [value]="age.value">{{age.value}} years old</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </form>
     </div>
     <ul class="groups__selected-filters">
       <h2 *ngIf="selectedGender"
           class="h--display-1 section__subtitle">Selected filters:</h2>
       <li *ngIf="(genderValue$ | async) as genderValue"
           class="groups__selected-filters-item"> {{genderValue}} <span
-              (click)="deleteGenderFilter()"
+              (click)="deleteGenderFilter(form)"
               class="groups__selected-filters-icon material-icons"> clear </span>
       </li>
       <li *ngIf="(ageValue$ | async) as ageValue"
-          class="groups__selected-filters-item"> {{ageValue}} <span (click)="deleteAgeFilter()"
+          class="groups__selected-filters-item"> {{ageValue}} <span (click)="deleteAgeFilter(form)"
               class="groups__selected-filters-icon material-icons"> clear </span>
       </li>
     </ul>

@@ -4,6 +4,7 @@ import { Group } from 'src/app/shared/types/group.type';
 import { Router } from '@angular/router';
 import { routePath } from 'src/app/core/constans/route.path';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-groups',
@@ -43,13 +44,16 @@ export class GroupsComponent {
     this.groupService.filterAge(age);
   }
 
-  deleteGenderFilter(): void {
+  deleteGenderFilter(form: NgForm): void {
     this.groupService.filterGender('');
     this.selectedGender = '';
+    form.controls.gender.reset();
   }
 
-  deleteAgeFilter(): void {
+  deleteAgeFilter(form: NgForm): void {
     this.groupService.filterAge('');
     this.selectedAge = '';
+    form.controls.age.reset();
+
   }
 }
