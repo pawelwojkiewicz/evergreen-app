@@ -14,7 +14,7 @@ export class GroupsService {
       id: 1,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 30,
+      age: 28,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -22,7 +22,7 @@ export class GroupsService {
       id: 2,
       name: 'Roberts family',
       gender: 'female',
-      age: 26,
+      age: 62,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -30,7 +30,7 @@ export class GroupsService {
       id: 3,
       name: 'Male Diabetics',
       gender: 'male',
-      age: 30,
+      age: 12,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -38,7 +38,7 @@ export class GroupsService {
       id: 4,
       name: 'Bury',
       gender: 'female',
-      age: 16,
+      age: 22,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -46,7 +46,7 @@ export class GroupsService {
       id: 5,
       name: 'Male Diabetics',
       gender: 'male',
-      age: 32,
+      age: 58,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -54,7 +54,7 @@ export class GroupsService {
       id: 6,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 42,
+      age: 39,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -62,7 +62,7 @@ export class GroupsService {
       id: 7,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 30,
+      age: 17,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -70,7 +70,7 @@ export class GroupsService {
       id: 8,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 30,
+      age: 45,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -78,7 +78,7 @@ export class GroupsService {
       id: 9,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 30,
+      age: 51,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -86,7 +86,7 @@ export class GroupsService {
       id: 10,
       name: 'Male Diabetics',
       gender: 'male',
-      age: 30,
+      age: 11,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -94,7 +94,7 @@ export class GroupsService {
       id: 11,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 30,
+      age: 36,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },

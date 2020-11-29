@@ -2,10 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Group } from '../types/group.type';
 
 @Pipe({
-  name: 'filter',
+  name: 'filterGender',
   pure: false
 })
-export class FilterPipe implements PipeTransform {
+export class FilterGenderPipe implements PipeTransform {
 
   transform(values: Group[], gender: string): Group[] {
     if (gender) {
@@ -13,5 +13,4 @@ export class FilterPipe implements PipeTransform {
     }
     return values;
   }
-
 }
