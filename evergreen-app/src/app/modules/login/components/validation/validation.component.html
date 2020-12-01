@@ -1,4 +1,4 @@
 <ng-content *ngIf="control.invalid && control.touched || control.hasError('minlength')"
             select="[minlength]"></ng-content>
-<ng-content *ngIf="control.invalid && control.touched"
+<ng-content *ngIf="control.invalid && control.touched || control.hasError('email')"
             select="[email]"></ng-content>
