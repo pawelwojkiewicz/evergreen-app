@@ -1,6 +1,10 @@
 @import 'src/scss/abstracts';
 
 .groups {
+  &__form {
+    display: flex;
+  }
+
   &__filters {
     display: flex;
     align-items: center;

@@ -1,19 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GroupsService {
-
-  constructor() { }
-
-  private genderValueSubject = new Subject<string>();
-  public genderValue$ = this.genderValueSubject.asObservable();
-
-  private ageValueSubject = new Subject<string>();
-  public ageValue$ = this.ageValueSubject.asObservable();
 
   private groups: Group[] = [
     {
@@ -113,13 +104,5 @@ export class GroupsService {
   getGroup(id: number): Group {
     const groupElement = this.groups.find(group => group.id === +id);
     return groupElement;
-  }
-
-  filterGender(gender: string): void {
-    this.genderValueSubject.next(gender);
-  }
-
-  filterAge(age: string): void {
-    this.ageValueSubject.next(age);
   }
 }

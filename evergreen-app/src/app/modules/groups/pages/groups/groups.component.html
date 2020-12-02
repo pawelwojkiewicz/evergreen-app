@@ -3,13 +3,11 @@
     <h1 class="h--display-2 section__title">Groups</h1>
     <h2 class="h--display-1 section__subtitle">Filters</h2>
     <div class="groups__filters">
-      <form #form="ngForm">
+      <form class="groups__form">
         <div class="groups__filters-item">
           <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
-            <mat-select ngModel
-                        [(ngModel)]="selectedGender"
-                        name="gender">
+            <mat-select name="gender">
               <mat-option>None</mat-option>
               <mat-option *ngFor="let gender of genders"
                           [value]="gender.value"
@@ -19,33 +17,18 @@
         </div>
         <div class="groups__filters-item groups__filters-item--column">
           <mat-radio-group aria-label="Select an option">
-            <mat-radio-button ngModel
-                              name="age"
-                              ngDefaultControl
-                              [(ngModel)]="selectedAge"
-                              (click)="selectAge(age.value)"
-                              *ngFor="let age of ages"
+            <mat-radio-button *ngFor="let age of ages"
                               [value]="age.value">{{age.value}} years old</mat-radio-button>
           </mat-radio-group>
         </div>
       </form>
     </div>
     <ul class="groups__selected-filters">
-      <h2 *ngIf="selectedGender"
-          class="h--display-1 section__subtitle">Selected filters:</h2>
-      <li *ngIf="(genderValue$ | async) as genderValue"
-          class="groups__selected-filters-item"> {{genderValue}} <span
-              (click)="deleteGenderFilter(form)"
-              class="groups__selected-filters-icon material-icons"> clear </span>
-      </li>
-      <li *ngIf="(ageValue$ | async) as ageValue"
-          class="groups__selected-filters-item"> {{ageValue}} <span (click)="deleteAgeFilter(form)"
-              class="groups__selected-filters-icon material-icons"> clear </span>
-      </li>
+      <h2 class="h--display-1 section__subtitle">Selected filters:</h2>
     </ul>
     <app-group-item (click)="goToGroupDetail(group.id)"
                     [group]="group"
-                    *ngFor="let group of groups | filterGender: (genderValue$ | async) | filterAge : (ageValue$ | async)">
+                    *ngFor="let group of groups">
     </app-group-item>
   </div>
 </section>
