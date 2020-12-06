@@ -3,24 +3,28 @@
     <h1 class="h--display-2 section__title">Groups</h1>
     <h2 class="h--display-1 section__subtitle">Filters</h2>
     <div class="groups__filters">
-      <form class="groups__form">
+      <form [formGroup]="filterForm"
+            (ngSubmit)="onSubmit()"
+            class="groups__form">
         <div class="groups__filters-item">
           <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
-            <mat-select name="gender">
+            <mat-select formControlName="gender">
               <mat-option>None</mat-option>
-              <mat-option *ngFor="let gender of genders"
-                          [value]="gender.value"
-                          (click)="selectGender(gender.value)"> {{gender.value}} </mat-option>
+              <mat-option [value]="gender.value"
+                          *ngFor="let gender of genders"> {{gender.value}} </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="groups__filters-item groups__filters-item--column">
-          <mat-radio-group aria-label="Select an option">
+          <mat-radio-group formControlName="age"
+                           aria-label="Select an option">
             <mat-radio-button *ngFor="let age of ages"
-                              [value]="age.value">{{age.value}} years old</mat-radio-button>
+                              [value]="age.range">{{age.value}} years old</mat-radio-button>
           </mat-radio-group>
         </div>
+        <button type="submit"
+                class="btn btn-primary">Filtruj</button>
       </form>
     </div>
     <ul class="groups__selected-filters">

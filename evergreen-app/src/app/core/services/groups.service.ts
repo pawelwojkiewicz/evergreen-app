@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
+import { FilterService } from './filter.service';
+import { switchMap, filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Filter } from 'src/app/shared/types/filter.type';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class GroupsService {
+
+  filter$: Observable<Filter> = this.filterService.filter$;
+
+  constructor(private filterService: FilterService) { }
 
   private groups: Group[] = [
     {
@@ -105,4 +115,10 @@ export class GroupsService {
     const groupElement = this.groups.find(group => group.id === +id);
     return groupElement;
   }
+
+  filterArray(filters: Filter): void {
+    this.filterService.updateFilter(filters);
+  }
+
+
 }

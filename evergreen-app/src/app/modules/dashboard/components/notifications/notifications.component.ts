@@ -24,9 +24,11 @@ export class NotificationsComponent implements OnInit {
 
   onOverlay(): void {
     this.sidebarService.onNotificationClose();
+
   }
 
   onCloseNotifications(): void {
     this.sidebarService.onNotificationClose();
+
   }
 }

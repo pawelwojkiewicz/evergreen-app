@@ -1,9 +1,8 @@
 <div class="notifications"
-     [ngClass]="{'notifications--open': isOpen$ | async}">
-  <button type="button"
+     [ngClass]="{'notifications--open': isOpen$ | async}"> <button type="button"
           class="notifications__close-btn"
-          (click)="onCloseNotifications()">
-    <span class="notifications__close-icon material-icons"> close </span>
+          (click)="onCloseNotifications()"> <span class="notifications__close-icon material-icons">
+      close </span>
   </button>
   <div class="d-flex justify-content-between">
     <h2 class="h--display-1 section__subtitle">Recent received messages</h2>
