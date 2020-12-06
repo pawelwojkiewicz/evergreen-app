@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
 import { FilterService } from './filter.service';
-import { switchMap, filter, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Filter } from 'src/app/shared/types/filter.type';
-import { FormControl } from '@angular/forms';
+import { Filters } from 'src/app/shared/types/filter.type';
+import { switchMap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ import { FormControl } from '@angular/forms';
 
 export class GroupsService {
 
-  filter$: Observable<Filter> = this.filterService.filter$;
+  filter$: Observable<Filters> = this.filterService.filter$;
 
   constructor(private filterService: FilterService) { }
 
@@ -116,8 +115,8 @@ export class GroupsService {
     return groupElement;
   }
 
-  filterArray(filters: Filter): void {
-    this.filterService.updateFilter(filters);
+  filterArray(): void {
+
   }
 
 

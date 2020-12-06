@@ -3,10 +3,8 @@ import { GroupsService } from 'src/app/core/services/groups.service';
 import { Group } from 'src/app/shared/types/group.type';
 import { Router } from '@angular/router';
 import { routePath } from 'src/app/core/constans/route.path';
-import { Observable } from 'rxjs';
-import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { FilterService } from 'src/app/core/services/filter.service';
-import { Filter } from 'src/app/shared/types/filter.type';
 
 @Component({
   selector: 'app-groups',
@@ -16,7 +14,6 @@ import { Filter } from 'src/app/shared/types/filter.type';
 export class GroupsComponent implements OnInit {
   groups: Group[];
   filterForm: FormGroup;
-  filter: Filter;
 
   genders = [
     { value: 'male' },
@@ -45,7 +42,8 @@ export class GroupsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.groupService.filterArray(this.filterForm.value);
+    this.filterService.updateFilter(this.filterForm.value);
+    this.groupService.filterArray();
   }
 
   goToGroupDetail(id: number): void {

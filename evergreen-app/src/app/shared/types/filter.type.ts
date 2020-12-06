@@ -1,4 +1,4 @@
 export type Gender = string;
 export type Age = number[];
 
-export type Filter = Age | Gender;
+export type Filters = Age | Gender;
