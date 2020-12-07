@@ -116,8 +116,8 @@ export class GroupsService {
   }
 
   filterArray(): void {
-
+    this.filterService.filter$.subscribe(val => {
+      console.log(val);
+    })
   }
-
-
 }
