@@ -32,7 +32,7 @@
     </ul>
     <app-group-item (click)="goToGroupDetail(group.id)"
                     [group]="group"
-                    *ngFor="let group of groups">
+                    *ngFor="let group of (groups$ | async)">
     </app-group-item>
   </div>
 </section>

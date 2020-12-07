@@ -18,8 +18,6 @@ import { FilterService } from 'src/app/core/services/filter.service';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [
-    FilterService
-  ],
+  providers: [],
 })
 export class GroupsModule { }

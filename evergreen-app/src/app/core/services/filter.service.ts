@@ -4,15 +4,14 @@ import { Filters } from 'src/app/shared/types/filter.type';
 
 @Injectable({
   providedIn: 'root',
-
 })
 export class FilterService {
 
   // prywatny strumień o typie string
-  private filterSubject = new BehaviorSubject<Filters>(null);
+  private filterSubject = new BehaviorSubject<Filters>({gender: '', age: []});
 
   // publiczny strumien - Obervable,  do którego mozemy sie podpiac poprzez Subscribe
-  public filter$ = this.filterSubject.asObservable();
+  filter$ = this.filterSubject.asObservable();
 
   // Funkcja która aktualizuje nasz Observable o properte filters
   updateFilter(filters: Filters): void {

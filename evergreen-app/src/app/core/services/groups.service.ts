@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
 import { FilterService } from './filter.service';
-import { Observable } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Filters } from 'src/app/shared/types/filter.type';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +106,8 @@ export class GroupsService {
     },
   ];
 
+  private groups$ = new BehaviorSubject(this.groups);
+
   getGroups(): Group[] {
     return [...this.groups];
   }
@@ -115,9 +117,21 @@ export class GroupsService {
     return groupElement;
   }
 
-  filterArray(): void {
-    this.filterService.filter$.subscribe(val => {
-      console.log(val);
-    })
+  getFilteredGroups(): Observable<Group[]> {
+    return this.filterService.filter$.pipe(
+    switchMap(currentState => {
+       return this.groups$.pipe(
+         map(groups => {
+          let filteredArray =  groups;
+
+          if (currentState.age && currentState.age.length) {
+            filteredArray = filteredArray.filter(item => item.age >= currentState.age[0] && item.age <= currentState.age[1]);
+          }
+
+          return filteredArray;
+         })
+       )
+      })
+    );
   }
 }
