@@ -24,7 +24,8 @@
           </mat-radio-group>
         </div>
         <button type="submit"
-                class="btn btn-primary">Filtruj</button>
+                [disabled]="!this.filterForm.dirty"
+                class="btn btn-primary">Filter</button>
       </form>
     </div>
     <ul *ngIf="selectedFilters.length"

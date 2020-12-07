@@ -3,23 +3,28 @@
   font-weight: $font-weight--semibold;
   color: $color--white;
   padding: 8px 20px;
+
   &:hover {
     color: $color--white;
     text-decoration: none;
   }
+
   &-primary {
     height: $btn-height;
     background: $color--green;
     border-color: $color--green;
+
     &:hover {
       background: darken($color--green, 5%);
       border-color: darken($color--green, 5%);
     }
   }
+
   &-secondary {
     background-color: $color--green;
     border-color: $color--green;
     font-size: 14px;
+
     &:hover,
     &:focus {
       background-color: $color--green;
@@ -28,20 +33,29 @@
       box-shadow: none;
     }
   }
+
+  &[disabled] {
+    opacity: 0.5;
+  }
+
   &-icon {
     display: flex;
     align-items: center;
+
     i {
       margin-left: 10px;
     }
   }
+
   &-link {
     padding: 0;
     font-size: 14px;
     color: $color--green;
+
     &:hover {
       color: $color--green;
     }
+
     &:focus {
       box-shadow: none;
     }
