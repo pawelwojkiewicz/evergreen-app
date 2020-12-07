@@ -12,6 +12,7 @@ import { switchMap, map, tap } from 'rxjs/operators';
 export class GroupsService {
 
   filter$: Observable<Filters> = this.filterService.filter$;
+  selectedFilters: string[] = [];
 
   constructor(private filterService: FilterService) { }
 
@@ -68,7 +69,7 @@ export class GroupsService {
       id: 7,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 17,
+      age: 50,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -76,7 +77,7 @@ export class GroupsService {
       id: 8,
       name: 'Female Diabetics',
       gender: 'female',
-      age: 45,
+      age: 51,
       medication: 'Metmorfin',
       hapiness: '8-10'
     },
@@ -117,20 +118,60 @@ export class GroupsService {
     return groupElement;
   }
 
-  getFilteredGroups(): Observable<Group[]> {
-    return this.filterService.filter$.pipe(
-    switchMap(currentState => {
-       return this.groups$.pipe(
-         map(groups => {
-          let filteredArray =  groups;
 
-          if (currentState.age && currentState.age.length) {
-            filteredArray = filteredArray.filter(item => item.age >= currentState.age[0] && item.age <= currentState.age[1]);
-          }
+  getFilteredGroups(): any {
+    return this.filter$.pipe(
+      switchMap(currentFilters => {
+        // mapujemy arrayke groups w zaleznosci od filtra
+        return this.groups$.pipe(
+          map(groups => {
+            // Przypisujemy do nowej zmiennej nasza arrayke z groups
+            let filteredArray = groups;
+            // Tworzymy if statements dla kazdego filtra
+            if (
+              currentFilters.age &&
+              currentFilters.age.length &&
+              !currentFilters.gender
+            ) {
+              // przypisujemy do naszej stworzonej arrayki z danymi zfiltrowana arrayke
+              filteredArray = filteredArray.filter(
+                group =>
+                  group.age >= currentFilters.age[0] &&
+                  group.age <= currentFilters.age[1]
+              );
+              const ageFilterText = `${currentFilters.age[0]}-${currentFilters.age[1]} years old`;
+              this.selectedFilters = [ageFilterText];
+            } else if (
+              currentFilters.gender &&
+              currentFilters.gender.length &&
+              !currentFilters.age
+            ) {
+              filteredArray = filteredArray.filter(
+                group =>
+                  group.gender === currentFilters.gender
+              );
+              const genderFilterText = currentFilters.gender;
+              this.selectedFilters = [genderFilterText];
+            } else if (
+              currentFilters.age &&
+              currentFilters.gender
+            ) {
+              filteredArray = filteredArray.filter(
+                group =>
+                  group.gender === currentFilters.gender &&
+                  (
+                    group.age >= currentFilters.age[0] &&
+                    group.age <= currentFilters.age[1]
+                  )
+              );
+              const genderFilterText = currentFilters.gender;
+              const ageFilterText = `${currentFilters.age[0]}-${currentFilters.age[1]} years old`;
+              this.selectedFilters = [genderFilterText, ageFilterText];
+            }
+            return filteredArray;
 
-          return filteredArray;
-         })
-       )
+          })
+        );
       })
     );
   }

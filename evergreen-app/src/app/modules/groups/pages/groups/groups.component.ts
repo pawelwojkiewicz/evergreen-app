@@ -14,17 +14,18 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./groups.component.scss']
 })
 export class GroupsComponent implements OnInit {
-  groups$: Observable<Group[]>;
+  groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
   filterForm: FormGroup;
+  selectedFilters: string[] = [];
 
   genders = [
     { value: 'male' },
     { value: 'female' },
   ];
   ages = [
-    { value: '0-18', range: [0, 17] },
-    { value: '18-50', range: [18, 49] },
-    { value: '50-70', range: [50, 70] }
+    { value: '0-18', range: [0, 18] },
+    { value: '19-50', range: [19, 50] },
+    { value: '51-70', range: [51, 70] }
   ];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
@@ -32,27 +33,26 @@ export class GroupsComponent implements OnInit {
     private groupService: GroupsService,
     private filterService: FilterService,
     private router: Router,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.filterForm = new FormGroup({
       gender: new FormControl(null),
       age: new FormControl(null)
     });
-
-    this.groups$ = this.groupService.getFilteredGroups();
-
-    // this.filterService.filter$.subscribe(console.log);
-    // this.filterService.filter$.pipe(map(x => {
-    //   return {
-    //     test: x
-    //   };
-    // })).subscribe(console.log);
-    // this.groupService.getFilteredGroups().subscribe(value => console.log(value));
-
   }
 
   onSubmit(): void {
+    this.filterService.updateFilter(this.filterForm.value);
+    this.selectedFilters = this.groupService.selectedFilters;
+  }
+
+  deleteFilter(selectedFilter, index: number): void {
+    console.log(selectedFilter);
+    this.selectedFilters.splice(index, 1);
+
+    console.log(this.filterForm);
+
     this.filterService.updateFilter(this.filterForm.value);
   }
 

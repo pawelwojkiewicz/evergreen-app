@@ -8,7 +8,7 @@ import { Filters } from 'src/app/shared/types/filter.type';
 export class FilterService {
 
   // prywatny strumień o typie string
-  private filterSubject = new BehaviorSubject<Filters>({gender: '', age: []});
+  private filterSubject = new BehaviorSubject<Filters>({ gender: '', age: [] });
 
   // publiczny strumien - Obervable,  do którego mozemy sie podpiac poprzez Subscribe
   filter$ = this.filterSubject.asObservable();
