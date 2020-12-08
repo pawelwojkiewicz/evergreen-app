@@ -48,8 +48,6 @@ export class GroupsComponent implements OnInit {
   }
 
   deleteFilter(selectedFilter, index: number): void {
-    console.log(selectedFilter);
-    console.log(this.filterForm.value);
     this.selectedFilters.splice(index, 1);
     this.filterService.updateFilter(this.filterForm.value);
   }

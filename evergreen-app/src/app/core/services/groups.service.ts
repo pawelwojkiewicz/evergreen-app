@@ -127,11 +127,11 @@ export class GroupsService {
           map(groups => {
             // Przypisujemy do nowej zmiennej nasza arrayke z groups
             let filteredArray = groups;
+            this.selectedFilters = [];
             // Tworzymy if statements dla kazdego filtra
             if (
               currentFilters.age &&
-              currentFilters.age.length &&
-              !currentFilters.gender
+              currentFilters.age.length
             ) {
               // przypisujemy do naszej stworzonej arrayki z danymi zfiltrowana arrayke
               filteredArray = filteredArray.filter(
@@ -140,36 +140,16 @@ export class GroupsService {
                   group.age <= currentFilters.age[1]
               );
               const ageFilterText = `${currentFilters.age[0]}-${currentFilters.age[1]} years old`;
-              this.selectedFilters = [ageFilterText];
-            } else if (
-              currentFilters.gender &&
-              currentFilters.gender.length &&
-              !currentFilters.age
-            ) {
+              this.selectedFilters.push(ageFilterText);
+            }
+            if (currentFilters.gender) {
               filteredArray = filteredArray.filter(
                 group =>
                   group.gender === currentFilters.gender
               );
-              const genderFilterText = currentFilters.gender;
-              this.selectedFilters = [genderFilterText];
-            } else if (
-              currentFilters.age &&
-              currentFilters.gender
-            ) {
-              filteredArray = filteredArray.filter(
-                group =>
-                  group.gender === currentFilters.gender &&
-                  (
-                    group.age >= currentFilters.age[0] &&
-                    group.age <= currentFilters.age[1]
-                  )
-              );
-              const genderFilterText = currentFilters.gender;
-              const ageFilterText = `${currentFilters.age[0]}-${currentFilters.age[1]} years old`;
-              this.selectedFilters = [genderFilterText, ageFilterText];
+              this.selectedFilters.push(currentFilters.gender);
             }
             return filteredArray;
-
           })
         );
       })
