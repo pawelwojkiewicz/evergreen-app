@@ -7,6 +7,7 @@ import { routePath } from 'src/app/core/constans/route.path';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilterService } from 'src/app/core/services/filter.service';
 import { map } from 'rxjs/operators';
+import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
 
 @Component({
   selector: 'app-groups',
@@ -15,8 +16,8 @@ import { map } from 'rxjs/operators';
 })
 export class GroupsComponent implements OnInit {
   groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
+  selectedFilters$: Observable<SelectedFilters[]> = this.groupService.getSelectedFilters();
   filterForm: FormGroup;
-  selectedFilters: string[] = [];
 
   genders = [
     { value: 'male' },
@@ -44,11 +45,15 @@ export class GroupsComponent implements OnInit {
 
   onSubmit(): void {
     this.filterService.updateFilter(this.filterForm.value);
-    this.selectedFilters = this.groupService.selectedFilters;
   }
 
-  deleteFilter(selectedFilter, index: number): void {
-    this.selectedFilters.splice(index, 1);
+  deleteFilter(selectedFilter: SelectedFilters): void {
+    if (selectedFilter === this.filterForm.value.gender) {
+      this.filterForm.controls.gender.reset();
+    }
+    if (selectedFilter === this.filterForm.value.age) {
+      this.filterForm.controls.age.reset();
+    }
     this.filterService.updateFilter(this.filterForm.value);
   }
 

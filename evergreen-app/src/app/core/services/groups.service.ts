@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
 import { FilterService } from './filter.service';
 import { Observable, of, BehaviorSubject } from 'rxjs';
-import { Filters } from 'src/app/shared/types/filter.type';
+import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
 import { switchMap, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +12,6 @@ import { switchMap, map, tap } from 'rxjs/operators';
 export class GroupsService {
 
   filter$: Observable<Filters> = this.filterService.filter$;
-  selectedFilters: string[] = [];
 
   constructor(private filterService: FilterService) { }
 
@@ -119,40 +118,47 @@ export class GroupsService {
   }
 
 
-  getFilteredGroups(): any {
+  getFilteredGroups(): Observable<Group[]> {
     return this.filter$.pipe(
       switchMap(currentFilters => {
-        // mapujemy arrayke groups w zaleznosci od filtra
         return this.groups$.pipe(
           map(groups => {
-            // Przypisujemy do nowej zmiennej nasza arrayke z groups
             let filteredArray = groups;
-            this.selectedFilters = [];
-            // Tworzymy if statements dla kazdego filtra
             if (
               currentFilters.age &&
               currentFilters.age.length
             ) {
-              // przypisujemy do naszej stworzonej arrayki z danymi zfiltrowana arrayke
               filteredArray = filteredArray.filter(
                 group =>
                   group.age >= currentFilters.age[0] &&
                   group.age <= currentFilters.age[1]
               );
-              const ageFilterText = `${currentFilters.age[0]}-${currentFilters.age[1]} years old`;
-              this.selectedFilters.push(ageFilterText);
             }
             if (currentFilters.gender) {
               filteredArray = filteredArray.filter(
                 group =>
                   group.gender === currentFilters.gender
               );
-              this.selectedFilters.push(currentFilters.gender);
             }
             return filteredArray;
           })
         );
       })
+    );
+  }
+
+  getSelectedFilters(): Observable<SelectedFilters[]> {
+    return this.filter$.pipe(map(item => {
+      const selectedFilters = [];
+      if (item.age && item.age.length) {
+        const age = `${item.age[0]}-${item.age[1]} years old`;
+        selectedFilters.push({ value: item.age, name: age });
+      }
+      if (item.gender) {
+        selectedFilters.push({ value: item.gender, name: item.gender });
+      }
+      return selectedFilters;
+    })
     );
   }
 }

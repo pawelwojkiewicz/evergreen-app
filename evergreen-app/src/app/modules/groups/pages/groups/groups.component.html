@@ -28,12 +28,12 @@
                 class="btn btn-primary">Filter</button>
       </form>
     </div>
-    <ul *ngIf="selectedFilters.length"
+    <ul *ngIf="(selectedFilters$ |async).length"
         class="groups__selected-filters">
       <h2 class="h--display-1 section__subtitle">Selected filters:</h2>
       <li class="groups__selected-filters-item"
-          *ngFor="let selectedFilter of selectedFilters; let i = index"> {{selectedFilter}} <span
-              (click)="deleteFilter(selectedFilter ,i)"
+          *ngFor="let selectedFilter of (selectedFilters$ | async)"> {{selectedFilter.name}} <span
+              (click)="deleteFilter(selectedFilter.value)"
               class="groups__selected-filters-icon material-icons"> close </span>
       </li>
     </ul>
