@@ -42,21 +42,9 @@ export class GroupsComponent implements OnInit {
       age: new FormControl(null)
     });
   }
-
   onSubmit(): void {
     this.filterService.updateFilter(this.filterForm.value);
   }
-
-  deleteFilter(selectedFilter: SelectedFilters): void {
-    if (selectedFilter === this.filterForm.value.gender) {
-      this.filterForm.controls.gender.reset();
-    }
-    if (selectedFilter === this.filterForm.value.age) {
-      this.filterForm.controls.age.reset();
-    }
-    this.filterService.updateFilter(this.filterForm.value);
-  }
-
   goToGroupDetail(id: number): void {
     this.router.navigate([...this.groupsRoute, id]);
   }

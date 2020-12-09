@@ -4,6 +4,7 @@ import { FilterService } from './filter.service';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
 import { switchMap, map, tap } from 'rxjs/operators';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { switchMap, map, tap } from 'rxjs/operators';
 export class GroupsService {
 
   filter$: Observable<Filters> = this.filterService.filter$;
+  filterForm: FormGroup;
 
   constructor(private filterService: FilterService) { }
 
@@ -149,13 +151,25 @@ export class GroupsService {
 
   getSelectedFilters(): Observable<SelectedFilters[]> {
     return this.filter$.pipe(map(item => {
-      const selectedFilters = [];
+      const selectedFilters: SelectedFilters[] = [];
       if (item.age && item.age.length) {
         const age = `${item.age[0]}-${item.age[1]} years old`;
-        selectedFilters.push({ value: item.age, name: age });
+        selectedFilters.push({
+          label: age,
+          onDelete: (filterForm) => {
+            this.filterService.removeAgeFilter();
+            filterForm.controls.age.reset();
+          }
+        });
       }
       if (item.gender) {
-        selectedFilters.push({ value: item.gender, name: item.gender });
+        selectedFilters.push({
+          label: item.gender,
+          onDelete: (filterForm) => {
+            this.filterService.removeGenderFilter();
+            filterForm.controls.gender.reset();
+          }
+        });
       }
       return selectedFilters;
     })

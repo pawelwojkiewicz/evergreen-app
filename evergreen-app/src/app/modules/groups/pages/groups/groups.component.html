@@ -25,15 +25,15 @@
         </div>
         <button type="submit"
                 [disabled]="!this.filterForm.dirty"
-                class="btn btn-primary">Filter</button>
+                class="btn btn-primary groups__filters-btn">Filter</button>
       </form>
     </div>
     <ul *ngIf="(selectedFilters$ |async).length"
         class="groups__selected-filters">
       <h2 class="h--display-1 section__subtitle">Selected filters:</h2>
       <li class="groups__selected-filters-item"
-          *ngFor="let selectedFilter of (selectedFilters$ | async)"> {{selectedFilter.name}} <span
-              (click)="deleteFilter(selectedFilter.value)"
+          *ngFor="let selectedFilter of (selectedFilters$ | async)"> {{selectedFilter.label}} <span
+              (click)="selectedFilter.onDelete(filterForm)"
               class="groups__selected-filters-icon material-icons"> close </span>
       </li>
     </ul>
