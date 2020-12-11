@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 import { routePath } from 'src/app/core/constans/route.path';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilterService } from 'src/app/core/services/filter.service';
-import { map } from 'rxjs/operators';
-import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
+import { SelectedFilters } from 'src/app/shared/types/filter.type';
 
 @Component({
   selector: 'app-groups',
@@ -40,6 +39,15 @@ export class GroupsComponent implements OnInit {
     this.filterForm = new FormGroup({
       gender: new FormControl(null),
       age: new FormControl(null)
+    });
+
+    this.filterService.filter$.subscribe(item => {
+      if (item.gender === '') {
+        this.filterForm.controls.gender.reset();
+      }
+      if (item.age != null && item.age.length < 1) {
+        this.filterForm.controls.age.reset();
+      }
     });
   }
   onSubmit(): void {
