@@ -1,5 +1,5 @@
 <div class="sidebar"
-     [ngClass]="{'sidebar--open': isOpen}">
+     [ngClass]="{'sidebar--open': (isOpen$ | async)}">
   <div class="sidebar__logo"
        routerLink="/home">
     <img src="/assets/images/logo.svg"
@@ -41,13 +41,12 @@
           class="sidebar__trigger">
     <span class="sidebar__trigger-icon material-icons"> menu </span>
   </button>
-  <button *ngIf="showNotificationsButton"
-          (click)="onOpenNotifications()"
+  <button (click)="onOpenNotifications()"
           type="button"
           class="sidebar__notifications d-flex align-items-center">
     <span class="material-icons"> notifications </span>
   </button>
 </div>
-<div *ngIf="isOpen"
-     (click)="onOverlay()"
+<div *ngIf="isOpen$ | async"
+     (click)="onCloseSidebar()"
      class="overlay"></div>

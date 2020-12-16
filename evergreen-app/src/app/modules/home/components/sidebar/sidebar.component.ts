@@ -1,8 +1,9 @@
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnDestroy } from '@angular/core';
 import { routePath } from 'src/app/core/constans/route.path';
 import { NavigationStart, Router } from '@angular/router';
 import { SidebarService } from 'src/app/core/services/sidebar.service';
+import { NotificationsService } from 'src/app/core/services/notifications.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,8 @@ import { SidebarService } from 'src/app/core/services/sidebar.service';
 export class SidebarComponent implements OnDestroy {
 
   isOpen = false;
-  showNotificationsButton = true;
+
+  isOpen$: Observable<boolean> = this.sidebarService.isOpen$;
 
   dashboardRoute = ['/', routePath.home, routePath.dashboard];
   patientsRoute = ['/', routePath.home, routePath.patients];
@@ -20,31 +22,31 @@ export class SidebarComponent implements OnDestroy {
 
   routerSubscribtion: Subscription;
 
-
   constructor(
     private router: Router,
     private sidebarService: SidebarService,
+    private notificationService: NotificationsService,
   ) {
     this.routerSubscribtion = this.router.events.subscribe(
       event => {
         if (event instanceof NavigationStart) {
           this.isOpen = false;
-          this.showNotificationsButton = !this.showNotificationsButton;
+          this.sidebarService.sidebarState(false);
         }
       }
     );
   }
 
   onOpenSidebar(): void {
-    this.isOpen = true;
+    this.sidebarService.sidebarState(true);
+  }
+
+  onCloseSidebar(): void {
+    this.sidebarService.sidebarState(false);
   }
 
   onOpenNotifications(): void {
-    this.sidebarService.onNotificationOpen();
-  }
-
-  onOverlay(): void {
-    this.isOpen = false;
+    this.notificationService.notificationState(true);
   }
 
   ngOnDestroy(): void {

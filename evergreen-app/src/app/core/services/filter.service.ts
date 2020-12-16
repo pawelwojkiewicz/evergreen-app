@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Filters } from 'src/app/shared/types/filter.type';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +10,33 @@ export class FilterService {
   private filterSubject = new BehaviorSubject<Filters>({ gender: '', age: [] });
   filter$ = this.filterSubject.asObservable();
 
-  updateFilter(filters: Filters): void {
-    this.filterSubject.next(filters);
+  updateFilter(filters: Partial<Filters>): void {
+    const newState = { ...this.filterSubject.value, ...filters };
+    this.filterSubject.next(newState);
   }
 
-  removeAgeFilter(): void {
-    this.filterSubject.value.age = [];
-    this.updateFilter(this.filterSubject.value);
-  }
-
-  removeGenderFilter(): void {
-    this.filterSubject.value.gender = '';
-    this.updateFilter(this.filterSubject.value);
+  getSelectedFilters(): Observable<SelectedFilters[]> {
+    return this.filterSubject.pipe(map(item => {
+      const selectedFilters: SelectedFilters[] = [];
+      if (item.age && item.age.length) {
+        const age = `${item.age[0]}-${item.age[1]} years old`;
+        selectedFilters.push({
+          label: age,
+          onDelete: () => {
+            this.updateFilter({ age: [] });
+          }
+        });
+      }
+      if (item.gender) {
+        selectedFilters.push({
+          label: item.gender,
+          onDelete: () => {
+            this.updateFilter({ gender: '' });
+          }
+        });
+      }
+      return selectedFilters;
+    })
+    );
   }
 }

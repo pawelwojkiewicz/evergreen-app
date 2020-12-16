@@ -15,7 +15,7 @@ import { SelectedFilters } from 'src/app/shared/types/filter.type';
 })
 export class GroupsComponent implements OnInit {
   groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
-  selectedFilters$: Observable<SelectedFilters[]> = this.groupService.getSelectedFilters();
+  selectedFilters$: Observable<SelectedFilters[]> = this.filterService.getSelectedFilters();
   filterForm: FormGroup;
 
   genders = [
@@ -41,13 +41,19 @@ export class GroupsComponent implements OnInit {
       age: new FormControl(null)
     });
 
+
     this.filterService.filter$.subscribe(item => {
-      if (item.gender === '') {
-        this.filterForm.controls.gender.reset();
-      }
-      if (item.age != null && item.age.length < 1) {
-        this.filterForm.controls.age.reset();
-      }
+
+      //  this.filterForm.patchValue - wprowadzam item - obiekt filtrow.
+      //  ma sie wywolywac tylko kiedy zmieni sie stan formularza.
+      // pipe(filter)
+
+      // if (item.gender === '') {
+      //   this.filterForm.controls.gender.reset();
+      // }
+      // if (item.age != null && item.age.length < 1) {
+      //   this.filterForm.controls.age.reset();
+      // }
     });
   }
   onSubmit(): void {

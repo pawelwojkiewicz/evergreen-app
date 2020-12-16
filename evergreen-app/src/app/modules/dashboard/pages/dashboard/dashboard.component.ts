@@ -5,6 +5,7 @@ import { Patient } from 'src/app/shared/types/patient.type';
 import { Group } from 'src/app/shared/types/group.type';
 import { routePath } from 'src/app/core/constans/route.path';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,17 +15,16 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
 
   patients: Patient[] = [];
-  groups: Group[] = [];
+  groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
   patientsRoute = ['/', routePath.home, routePath.patients];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
   constructor(
     private patientsService: PatientsService,
-    private groupsService: GroupsService,
+    private groupService: GroupsService,
     private router: Router,
   ) {
     this.patients = this.patientsService.getPatients();
-    this.groups = this.groupsService.getGroups();
   }
 
   goToGroupDetail(id: number): void {

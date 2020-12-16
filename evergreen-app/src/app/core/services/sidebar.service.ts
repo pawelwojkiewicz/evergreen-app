@@ -1,20 +1,16 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { NotificationsService } from './notifications.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SidebarService {
 
-  private notifivationOpenSubject =  new Subject<boolean>();
-  public notificationOpen$ = this.notifivationOpenSubject.asObservable();
+  private isOpenSubject = new Subject<boolean>();
+  public isOpen$ = this.isOpenSubject.asObservable();
 
-  constructor() { }
-
-  onNotificationOpen(): void {
-    this.notifivationOpenSubject.next(true);
-  }
-  onNotificationClose(): void {
-    this.notifivationOpenSubject.next(false);
+  sidebarState(state: boolean): void {
+    this.isOpenSubject.next(state);
   }
 }

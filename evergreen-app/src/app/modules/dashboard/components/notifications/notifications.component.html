@@ -1,7 +1,7 @@
 <div class="notifications"
      [ngClass]="{'notifications--open': isOpen$ | async}"> <button type="button"
           class="notifications__close-btn"
-          (click)="onCloseNotifications()"> <span class="notifications__close-icon material-icons">
+          (click)="onCloseNotification()"> <span class="notifications__close-icon material-icons">
       close </span>
   </button>
   <div class="d-flex justify-content-between">
@@ -26,5 +26,5 @@
   </div>
 </div>
 <div *ngIf="isOpen$ | async"
-     (click)="onOverlay()"
+     (click)="onCloseNotification()"
      class="overlay"></div>

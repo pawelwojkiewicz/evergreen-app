@@ -33,7 +33,7 @@
       <h2 class="h--display-1 section__subtitle">Selected filters:</h2>
       <li class="groups__selected-filters-item"
           *ngFor="let selectedFilter of (selectedFilters$ | async)"> {{selectedFilter.label}} <span
-              (click)="selectedFilter.onDelete(filterForm)"
+              (click)="selectedFilter.onDelete()"
               class="groups__selected-filters-icon material-icons"> close </span>
       </li>
     </ul>

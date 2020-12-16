@@ -11,7 +11,6 @@ import { Patient } from 'src/app/shared/types/patient.type';
   styleUrls: ['./patient-detail.component.scss']
 })
 export class PatientDetailComponent {
-  patient: Patient;
   patient$: Observable<Patient>;
 
   constructor(
@@ -19,5 +18,5 @@ export class PatientDetailComponent {
     private patientsService: PatientsService
   ) {
     this.patient$ = this.active.params.pipe(map(params => this.patientsService.getPatientDetail(params.id)));
-   }
+  }
 }

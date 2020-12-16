@@ -7,7 +7,6 @@ import { GroupItemComponent } from './components/group-item/group-item.component
 import { GroupDetailComponent } from './pages/group-detail/group-detail.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FilterService } from 'src/app/core/services/filter.service';
 
 
 @NgModule({
@@ -16,7 +15,7 @@ import { FilterService } from 'src/app/core/services/filter.service';
     CommonModule,
     GroupsRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
 })
