@@ -41,21 +41,11 @@ export class GroupsComponent implements OnInit {
       age: new FormControl(null)
     });
 
-
     this.filterService.filter$.subscribe(item => {
-
-      //  this.filterForm.patchValue - wprowadzam item - obiekt filtrow.
-      //  ma sie wywolywac tylko kiedy zmieni sie stan formularza.
-      // pipe(filter)
-
-      // if (item.gender === '') {
-      //   this.filterForm.controls.gender.reset();
-      // }
-      // if (item.age != null && item.age.length < 1) {
-      //   this.filterForm.controls.age.reset();
-      // }
+      this.filterForm.patchValue(item);
     });
   }
+
   onSubmit(): void {
     this.filterService.updateFilter(this.filterForm.value);
   }
@@ -63,3 +53,6 @@ export class GroupsComponent implements OnInit {
     this.router.navigate([...this.groupsRoute, id]);
   }
 }
+
+
+//usubscribe dla filterService!!!!

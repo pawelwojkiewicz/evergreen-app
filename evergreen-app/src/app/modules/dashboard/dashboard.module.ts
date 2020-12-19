@@ -9,6 +9,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 
 @NgModule({
   declarations: [DashboardComponent, PatientCardComponent, GroupComponent, NotificationsComponent],
-  imports: [CommonModule, DashboardRoutingModule, ],
+  imports: [CommonModule, DashboardRoutingModule],
 })
 export class DashboardModule {}

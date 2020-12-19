@@ -16,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     GroupsRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-  ],
-  providers: [],
+  ]
 })
 export class GroupsModule { }

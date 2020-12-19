@@ -2,8 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
+  // No Lazy-loading modules
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', redirectTo: '/home/dashboard', pathMatch: 'full' },
+
+  // Lazy-loading modules
   {
     path: 'home',
     loadChildren: () =>
@@ -13,11 +16,6 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./modules/login/login.module').then((m) => m.LoginModule)
-  },
-  {
-    path: 'groups',
-    loadChildren: () =>
-      import('./modules/groups/groups.module').then(m => m.GroupsModule)
   },
 ];
 
