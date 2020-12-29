@@ -1,0 +1,15 @@
+import { ErrorHandler, Injectable } from '@angular/core';
+import { ErrorDialogService } from 'src/app/shared/services/error-dialog.service';
+
+@Injectable()
+export class GlobalErrorHandler implements ErrorHandler {
+
+  constructor(private errorDialogService: ErrorDialogService) { }
+
+  handleError(error: Error): void {
+    this.errorDialogService.openDialog(
+      error.message || 'Undefined client error'
+    );
+    console.error('Error from global error handler', error);
+  }
+}

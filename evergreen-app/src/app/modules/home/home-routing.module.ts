@@ -28,6 +28,13 @@ const routes: Routes = [
             (m) => m.GroupsModule
           ),
       },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
+      },
     ],
   },
 ];
