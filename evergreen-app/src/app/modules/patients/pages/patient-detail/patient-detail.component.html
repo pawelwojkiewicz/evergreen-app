@@ -1,6 +1,9 @@
-<div *ngIf="(patient$ | async) as patient">
-  <p>{{patient.name}}</p>
-  <p>{{patient.gender}}</p>
-  <p>{{patient.number}}</p>
-  <p>{{patient.born}}</p>
-</div>
+<section *ngIf="(patient$ | async) as patient"
+         class="section groups">
+  <div class="container-fluid">
+    <h1 class="h--display-2 section__title">{{patient.name}}</h1>
+    <p>Gender: {{patient.gender}}</p>
+    <p>Patient number: {{patient.number}}</p>
+    <p>Date of birth: {{patient.born}}</p>
+  </div>
+</section>

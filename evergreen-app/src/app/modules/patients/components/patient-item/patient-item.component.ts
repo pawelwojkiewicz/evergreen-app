@@ -6,6 +6,6 @@ import { Patient } from 'src/app/shared/types/patient.type';
   templateUrl: './patient-item.component.html',
   styleUrls: ['./patient-item.component.scss']
 })
-export class PatientItemComponent{
+export class PatientItemComponent {
   @Input() patient: Patient;
 }

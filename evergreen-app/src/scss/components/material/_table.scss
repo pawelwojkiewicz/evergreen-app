@@ -1,4 +1,6 @@
 .mat-table {
+  background: transparent;
+
   .mat-cell {
     color: $color--base;
   }
@@ -9,6 +11,11 @@
 
     &:first-child {
       background: $color--gray-500;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $color--gray-300;
     }
 
     &.mat-header-row {

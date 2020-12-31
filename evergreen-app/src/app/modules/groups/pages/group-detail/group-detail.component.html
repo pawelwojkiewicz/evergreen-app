@@ -1,7 +1,10 @@
-<div *ngIf="(group$ | async) as group">
-  <p>{{group.name}}</p>
-  <p>{{group.gender}}</p>
-  <p>{{group.age}}</p>
-  <p>{{group.medication}}</p>
-  <p>{{group.hapiness}}</p>
-</div>
+<section *ngIf="(group$ | async) as group"
+         class="section groups">
+  <div class="container-fluid">
+    <h1 class="h--display-2 section__title">{{group.name}}</h1>
+    <p>Gender: {{group.gender}}</p>
+    <p>Age: {{group.age}}</p>
+    <p>Medication: {{group.medication}}</p>
+    <p>Level of happiness: {{group.hapiness}}</p>
+  </div>
+</section>
