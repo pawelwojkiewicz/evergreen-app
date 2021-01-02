@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from './core/services/auth-guard.service';
 
 const routes: Routes = [
   // No Lazy-loading modules
@@ -10,7 +11,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule)
+      import('./modules/home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'login',
