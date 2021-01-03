@@ -7,6 +7,7 @@ export class AuthService {
   // Fake authentication
 
   loggedIn = false;
+  role: string;
 
   isAuthenticated(): any {
     const promise = new Promise(

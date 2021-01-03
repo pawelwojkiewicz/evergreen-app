@@ -25,13 +25,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.signForm.valid && this.signForm.get('password').value === 'objectivity') {
+    if (
+      this.signForm.valid &&
+      this.signForm.get('password').value === 'objectivity'
+    ) {
       this.authService.loggedIn = true;
+      this.router.navigate(['/', routePath.home]);
+    } else if (
+      this.signForm.get('email').value === 'obj@wp.pl'
+    ) {
+      this.authService.loggedIn = true;
+      this.authService.role = 'admin';
       this.router.navigate(['/', routePath.home]);
     } else {
       alert('wrong password! Password is "objectivity"');
       this.signForm.controls.email.markAsTouched();
       this.signForm.controls.password.markAsTouched();
     }
+
   }
 }

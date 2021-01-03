@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { RoleGuardService } from 'src/app/core/services/role-guard.service';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
           import('../profile/profile.module').then(
             (m) => m.ProfileModule
           ),
+        canActivate: [RoleGuardService],
+        data: {
+          expectedRole: 'admin'
+        }
       },
     ],
   },
