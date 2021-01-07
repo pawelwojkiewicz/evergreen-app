@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+
+  text = '';
   constructor(private http: HttpClient) { }
 
   throwError(): void {

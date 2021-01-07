@@ -11,6 +11,8 @@
   &__container {
     @include media-breakpoint-up(xl) {
       padding: 40px;
+      height: 100vh;
+      overflow: auto;
     }
   }
 }
