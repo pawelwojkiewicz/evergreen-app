@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ProfileComponent {
 
   text = '';
+  trucnatedText = 'This text is truncated and should be cut after 20 characters';
   constructor(private http: HttpClient) { }
 
   throwError(): void {

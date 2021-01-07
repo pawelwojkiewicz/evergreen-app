@@ -4,15 +4,16 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { MaterialModule } from '../modules/material/material.module';
 import { LoadingDialogComponent } from './components/loading-dialog/loading-dialog.component';
 import { ToSlugPipe } from './pipes/to-slug.pipe';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 
 
 @NgModule({
-  declarations: [ErrorDialogComponent, LoadingDialogComponent, ToSlugPipe],
+  declarations: [ErrorDialogComponent, LoadingDialogComponent, ToSlugPipe, EllipsisPipe],
   imports: [
     CommonModule,
     MaterialModule
   ],
-  exports: [ErrorDialogComponent, LoadingDialogComponent, ToSlugPipe, MaterialModule],
+  exports: [ErrorDialogComponent, LoadingDialogComponent, ToSlugPipe, MaterialModule, EllipsisPipe],
 })
 export class SharedModule { }
