@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   // Fake authentication
 
-  loggedIn = false;
-  role: string;
+  loggedIn = true;
+  role = 'admin';
 
   isAuthenticated(): any {
     const promise = new Promise(

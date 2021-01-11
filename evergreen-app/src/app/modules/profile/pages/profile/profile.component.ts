@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-
+  confirmMessage = 'Are you really want to confirm ?'
+  condition = true;
   text = '';
   trucnatedText = 'This text is truncated and should be cut after 20 characters';
   constructor(private http: HttpClient) { }

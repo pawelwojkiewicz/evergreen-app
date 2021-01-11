@@ -11,8 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    SharedModule,
-    FormsModule
+    SharedModule
   ]
 })
 export class ProfileModule { }
