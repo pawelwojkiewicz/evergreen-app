@@ -34,6 +34,17 @@
     }
   }
 
+  &-white {
+    background-color: $color--white;
+    border: 1px solid $color--green;
+    color: $color--green;
+
+    &:hover {
+      background: darken($color--green, 5%);
+      border-color: darken($color--green, 5%);
+    }
+  }
+
   &[disabled] {
     opacity: 0.5;
   }

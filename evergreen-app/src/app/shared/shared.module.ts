@@ -9,6 +9,7 @@ import { MyngifDirective } from './directives/myngif.directive';
 import { FormsModule } from '@angular/forms';
 import { BackgroundDirective } from './directives/background.directive';
 import { ConfirmClickDirective } from './directives/confirm-click.directive';
+import { ConfirmComponentComponent } from './components/confirm-component/confirm-component.component';
 
 
 
@@ -36,7 +37,8 @@ import { ConfirmClickDirective } from './directives/confirm-click.directive';
     EllipsisPipe,
     MyngifDirective,
     BackgroundDirective,
-    ConfirmClickDirective
+    ConfirmClickDirective,
+    ConfirmComponentComponent
   ]
 })
 export class SharedModule { }

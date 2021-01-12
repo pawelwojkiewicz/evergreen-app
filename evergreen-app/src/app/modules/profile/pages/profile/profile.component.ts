@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  confirmMessage = 'Are you really want to confirm ?'
+  confirmMessage = 'Are you really want to confirm ?';
   condition = true;
   text = '';
   trucnatedText = 'This text is truncated and should be cut after 20 characters';
@@ -24,5 +24,9 @@ export class ProfileComponent {
 
   successfulRequest(): any {
     this.http.get('https://httpstat.us/200?sleep=2000').toPromise();
+  }
+
+  test(): void {
+    console.log('test');
   }
 }

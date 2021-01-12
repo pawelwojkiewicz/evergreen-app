@@ -37,7 +37,8 @@
        appBackground
        [clickedColor]="'yellow'"
        [clickedTransform]="'translateX(100px)'">Udemy approach to style element with directive</p>
-    <button appConfirmClick="{{confirmMessage}}"
+    <button appConfirmClick
+            [confirmMessage]="confirmMessage"
             class="btn btn-primary">Confirm button</button>
   </div>
 </section>

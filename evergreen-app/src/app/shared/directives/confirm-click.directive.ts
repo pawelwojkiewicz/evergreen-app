@@ -1,19 +1,34 @@
-import { Directive, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponentComponent } from '../components/confirm-component/confirm-component.component';
 
 @Directive({
   selector: '[appConfirmClick]'
 })
 export class ConfirmClickDirective {
 
-  @Input('appConfirmClick') message: string;
+  @Input() confirmMessage: string;
 
-  constructor(
-    private elRef: ElementRef,
-    private renderer: Renderer2) {
-  }
+  constructor(private dialog: MatDialog) { }
 
-  @HostListener('click') click(e: Event): void {
-    confirm(this.message);
-    console.log('When confirm make next logic');
+  @HostListener('click', ['$event'])
+  onClick(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(ConfirmComponentComponent, {
+      data: this.confirmMessage,
+      maxHeight: '100%',
+      width: '540px',
+      maxWidth: '100%',
+      disableClose: false,
+      hasBackdrop: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('You confirmed the changes!');
+      } else {
+        console.log('You cancel the changes!');
+      }
+    });
   }
 }
