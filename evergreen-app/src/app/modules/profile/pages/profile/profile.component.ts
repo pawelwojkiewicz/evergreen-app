@@ -26,7 +26,7 @@ export class ProfileComponent {
     this.http.get('https://httpstat.us/200?sleep=2000').toPromise();
   }
 
-  test(): void {
-    console.log('test');
+  makeSomeLogic(): void {
+    console.log('you made some logic!');
   }
 }

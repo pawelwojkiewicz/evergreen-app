@@ -6,6 +6,7 @@ import { Group } from 'src/app/shared/types/group.type';
 import { routePath } from 'src/app/core/constans/route.path';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 export class DashboardComponent {
 
   patients: Patient[] = [];
-  groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
+  groups$: Observable<Group[]> = this.groupService.fetchGroups();
   patientsRoute = ['/', routePath.home, routePath.patients];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
@@ -25,6 +26,10 @@ export class DashboardComponent {
     private router: Router,
   ) {
     this.patients = this.patientsService.getPatients();
+  }
+
+  deleteGroup(): void {
+    console.log(this.groups$.pipe(map(groups => groups.find(group => group.id === 2))));
   }
 
   goToGroupDetail(id: number): void {

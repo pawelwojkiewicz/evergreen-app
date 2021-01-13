@@ -1,7 +1,6 @@
 <div *ngIf="group"
      class="group"
-     (click)="goToGroupDetail()">
-  <div class="group__title group__col">
+     (click)="goToGroupDetail()"> {{runChangeDetection}} <div class="group__title group__col">
     <span class=" text--display-3 mr-md-4 text--semibold">{{group.name}}</span>
   </div>
   <div class="group__col">

@@ -8,6 +8,7 @@ import { ConfirmComponentComponent } from '../components/confirm-component/confi
 export class ConfirmClickDirective {
 
   @Input() confirmMessage: string;
+  @Output() appConfirmClick = new EventEmitter<MouseEvent>();
 
   constructor(private dialog: MatDialog) { }
 
@@ -25,9 +26,9 @@ export class ConfirmClickDirective {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('You confirmed the changes!');
+        this.appConfirmClick.emit();
       } else {
-        console.log('You cancel the changes!');
+        return;
       }
     });
   }

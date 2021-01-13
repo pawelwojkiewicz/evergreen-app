@@ -21,6 +21,8 @@
                      *ngFor="let group of (groups$ | async) | slice:0:4; let i=index"></app-group>
         </div>
         <div class="d-flex justify-content-md-end mt-5">
+          <button (click)="deleteGroup()"
+                  class="btn btn-white">Delete Robert Family group</button>
           <a [routerLink]="groupsRoute"
              class="btn btn-secondary btn-icon ml-md-auto"> See all groups <i
                class="fas fa-arrow-right"></i>
