@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { Group } from 'src/app/shared/types/group.type';
 
 @Component({
@@ -14,7 +23,7 @@ export class GroupComponent implements OnChanges {
   @Output() detailsClick = new EventEmitter<string[]>();
 
   constructor(private changeDetector: ChangeDetectorRef) {
-    setInterval(() => { this.changeDetector.markForCheck() }, 1500);
+    setInterval(() => { this.changeDetector.markForCheck(); }, 1500);
   }
 
   goToGroupDetail(): void {

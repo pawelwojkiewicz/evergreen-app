@@ -1,5 +1,4 @@
-import { Directive, ElementRef, Renderer2, HostListener, HostBinding, Input } from '@angular/core';
-import { style } from '@angular/animations';
+import { Directive, ElementRef, HostBinding, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appBackground]'
@@ -16,7 +15,7 @@ export class BackgroundDirective {
     private renderer: Renderer2
   ) { }
 
-  @HostListener('click') click(eventData: Event): void {
+  @HostListener('click') click(): void {
     this.renderer.setStyle(this.elRef.nativeElement, 'background-color', this.clickedColor);
     this.transform = this.clickedTransform;
   }

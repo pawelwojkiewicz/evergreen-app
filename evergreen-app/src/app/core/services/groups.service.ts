@@ -1,9 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Group } from 'src/app/shared/types/group.type';
-import { FilterService } from './filter.service';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { Group } from 'src/app/shared/types/group.type';
+import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root'

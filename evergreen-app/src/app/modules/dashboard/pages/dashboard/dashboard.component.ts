@@ -1,12 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { GroupsService } from 'src/app/core/services/groups.service';
-import { PatientsService } from 'src/app/core/services/patients.service';
-import { Patient } from 'src/app/shared/types/patient.type';
-import { Group } from 'src/app/shared/types/group.type';
-import { routePath } from 'src/app/core/constans/route.path';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { routePath } from 'src/app/core/constans/route.path';
+import { GroupsService } from 'src/app/core/services/groups.service';
+import { PatientsService } from 'src/app/core/services/patients.service';
+import { Group } from 'src/app/shared/types/group.type';
+import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
   selector: 'app-dashboard',

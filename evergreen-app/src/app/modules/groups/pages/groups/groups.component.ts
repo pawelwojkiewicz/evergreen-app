@@ -1,12 +1,12 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { GroupsService } from 'src/app/core/services/groups.service';
-import { Group } from 'src/app/shared/types/group.type';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { routePath } from 'src/app/core/constans/route.path';
-import { FormGroup, FormControl } from '@angular/forms';
 import { FilterService } from 'src/app/core/services/filter.service';
+import { GroupsService } from 'src/app/core/services/groups.service';
 import { SelectedFilters } from 'src/app/shared/types/filter.type';
+import { Group } from 'src/app/shared/types/group.type';
 
 @Component({
   selector: 'app-groups',
@@ -55,4 +55,4 @@ export class GroupsComponent implements OnInit {
 }
 
 
-//usubscribe dla filterService!!!!
+// usubscribe dla filterService!!!!

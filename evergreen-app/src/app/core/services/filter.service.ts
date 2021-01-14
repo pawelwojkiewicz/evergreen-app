@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
 import { map } from 'rxjs/operators';
+import { Filters, SelectedFilters } from 'src/app/shared/types/filter.type';
 
 @Injectable({
   providedIn: 'root',

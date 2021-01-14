@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { GroupsComponent } from './pages/groups/groups.component';
+import { RouterModule, Routes } from '@angular/router';
 import { GroupDetailComponent } from './pages/group-detail/group-detail.component';
+import { GroupsComponent } from './pages/groups/groups.component';
+
 
 const routes: Routes = [
   { path: '', component: GroupsComponent },

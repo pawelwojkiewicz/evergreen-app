@@ -1,6 +1,10 @@
 {
   "debug.console.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
-    "terminal.integrated.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
-    "scm.inputFontFamily": "Menlo, Monaco, 'Courier New', monospace",
-    "font-switcher.fontFamily": "DejaVu Sans Mono"
+  "terminal.integrated.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "scm.inputFontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "font-switcher.fontFamily": "DejaVu Sans Mono",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
+
 }

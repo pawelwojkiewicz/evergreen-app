@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PatientsRoutingModule } from './patients-routing.module';
-import { PatientsComponent } from './pages/patients/patients.component';
-import { PatientDetailComponent } from './pages/patient-detail/patient-detail.component';
-import { PatientItemComponent } from './components/patient-item/patient-item.component';
+import { NgModule } from '@angular/core';
 import { MaterialModule } from '../material/material.module';
+import { PatientItemComponent } from './components/patient-item/patient-item.component';
+import { PatientDetailComponent } from './pages/patient-detail/patient-detail.component';
+import { PatientsComponent } from './pages/patients/patients.component';
+import { PatientsRoutingModule } from './patients-routing.module';
+
 
 @NgModule({
   declarations: [PatientsComponent, PatientDetailComponent, PatientItemComponent],

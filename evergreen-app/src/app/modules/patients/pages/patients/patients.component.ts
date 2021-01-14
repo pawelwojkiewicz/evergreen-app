@@ -1,13 +1,12 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { PatientsService } from 'src/app/core/services/patients.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Patient } from 'src/app/shared/types/patient.type';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { routePath } from 'src/app/core/constans/route.path';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { routePath } from 'src/app/core/constans/route.path';
+import { PatientsService } from 'src/app/core/services/patients.service';
+import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
   selector: 'app-patients',

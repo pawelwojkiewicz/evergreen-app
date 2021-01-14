@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/shared/types/group.type';
-import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { GroupsService } from 'src/app/core/services/groups.service';
+import { Group } from 'src/app/shared/types/group.type';
 
 @Component({
   selector: 'app-group-detail',

@@ -1,6 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ErrorDialogService } from '../../services/error-dialog.service';
 
 @Component({
   selector: 'app-error-dialog',
