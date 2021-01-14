@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { routePath } from '@core/constans/route.path';
+import { FilterService } from '@core/services/filter.service';
+import { GroupsService } from '@core/services/groups.service';
+import { SelectedFilters } from '@shared/types/filter.type';
+import { Group } from '@shared/types/group.type';
 import { Observable } from 'rxjs';
-import { routePath } from 'src/app/core/constans/route.path';
-import { FilterService } from 'src/app/core/services/filter.service';
-import { GroupsService } from 'src/app/core/services/groups.service';
-import { SelectedFilters } from 'src/app/shared/types/filter.type';
-import { Group } from 'src/app/shared/types/group.type';
 
 @Component({
   selector: 'app-groups',

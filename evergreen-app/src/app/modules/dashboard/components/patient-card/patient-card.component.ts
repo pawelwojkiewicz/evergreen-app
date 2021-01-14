@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { routePath } from 'src/app/core/constans/route.path';
-import { Patient } from 'src/app/shared/types/patient.type';
+import { routePath } from '@core/constans/route.path';
+import { Patient } from '@shared/types/patient.type';
 
 @Component({
   selector: 'app-patient-card',

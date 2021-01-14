@@ -9,6 +9,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
+
 @NgModule({
   declarations: [DashboardComponent, PatientCardComponent, GroupComponent, NotificationsComponent],
   imports: [CommonModule, DashboardRoutingModule],

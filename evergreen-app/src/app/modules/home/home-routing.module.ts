@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoleGuardService } from 'src/app/core/services/role-guard.service';
+import { RoleGuardService } from '@core/services/role-guard.service';
 import { HomeComponent } from './pages/home/home.component';
 
 

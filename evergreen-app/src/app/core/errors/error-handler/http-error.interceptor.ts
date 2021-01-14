@@ -1,13 +1,9 @@
-import {
-  HttpErrorResponse, HttpEvent, HttpHandler,
-
-  HttpInterceptor, HttpRequest
-} from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ErrorDialogService } from '@shared/services/error-dialog.service';
+import { LoadingDialogService } from '@shared/services/loading-dialog.service';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { ErrorDialogService } from 'src/app/shared/services/error-dialog.service';
-import { LoadingDialogService } from 'src/app/shared/services/loading-dialog.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {

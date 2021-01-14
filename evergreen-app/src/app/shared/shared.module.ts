@@ -13,7 +13,16 @@ import { ToSlugPipe } from './pipes/to-slug.pipe';
 
 
 
-
+const shared = [
+  ErrorDialogComponent,
+  LoadingDialogComponent,
+  ToSlugPipe,
+  EllipsisPipe,
+  MyngifDirective,
+  BackgroundDirective,
+  ConfirmClickDirective,
+  ConfirmComponentComponent
+];
 
 @NgModule({
   imports: [
@@ -22,25 +31,12 @@ import { ToSlugPipe } from './pipes/to-slug.pipe';
     FormsModule
   ],
   exports: [
-    ErrorDialogComponent,
-    LoadingDialogComponent,
-    ToSlugPipe,
     MaterialModule,
-    EllipsisPipe,
-    MyngifDirective,
     FormsModule,
-    BackgroundDirective,
-    ConfirmClickDirective
+    [...shared],
   ],
   declarations: [
-    ErrorDialogComponent,
-    LoadingDialogComponent,
-    ToSlugPipe,
-    EllipsisPipe,
-    MyngifDirective,
-    BackgroundDirective,
-    ConfirmClickDirective,
-    ConfirmComponentComponent
+    [...shared],
   ]
 })
 export class SharedModule { }

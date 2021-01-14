@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Patient } from 'src/app/shared/types/patient.type';
+import { Patient } from '@shared/types/patient.type';
 
 @Component({
   selector: 'app-patient-item',

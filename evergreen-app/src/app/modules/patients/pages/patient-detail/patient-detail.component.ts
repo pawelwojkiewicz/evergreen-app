@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PatientsService } from '@core/services/patients.service';
+import { Patient } from '@shared/types/patient.type';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PatientsService } from 'src/app/core/services/patients.service';
-import { Patient } from 'src/app/shared/types/patient.type';
 
 @Component({
   selector: 'app-patient-detail',

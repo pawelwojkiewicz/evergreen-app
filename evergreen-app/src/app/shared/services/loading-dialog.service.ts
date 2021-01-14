@@ -21,7 +21,7 @@ export class LoadingDialogService {
         maxHeight: '100%',
         width: '400px',
         maxWidth: '100%',
-        disableClose: true,
+        disableClose: false,
         hasBackdrop: true
       });
 

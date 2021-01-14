@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Group } from 'src/app/shared/types/group.type';
+import { Group } from '@shared/types/group.type';
 
 @Component({
   selector: 'app-group-item',

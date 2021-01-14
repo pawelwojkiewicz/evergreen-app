@@ -17,8 +17,8 @@
         <h2 class="h--display-1 section__subtitle mt-5">Last groups</h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
           <app-group [group]="group"
-                     (detailsClick)="goToGroupDetail(group.id)"
-                     *ngFor="let group of (groups$ | async) | slice:0:4; let i=index"></app-group>
+                     (click)="goToGroupDetail(group.id)"
+                     *ngFor="let group of (groups$ | async) | slice:0:4"></app-group>
         </div>
         <div class="d-flex justify-content-md-end mt-5">
           <button (click)="deleteGroup()"

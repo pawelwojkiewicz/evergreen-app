@@ -1,14 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges
-} from '@angular/core';
-import { Group } from 'src/app/shared/types/group.type';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Group } from '@shared/types/group.type';
 
 @Component({
   selector: 'app-group',
@@ -16,30 +7,15 @@ import { Group } from 'src/app/shared/types/group.type';
   styleUrls: ['./group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GroupComponent implements OnChanges {
+export class GroupComponent {
 
   @Input() group: Group;
 
-  @Output() detailsClick = new EventEmitter<string[]>();
+  // ----Przejscie do routingu poprzez parent element----
 
-  constructor(private changeDetector: ChangeDetectorRef) {
-    setInterval(() => { this.changeDetector.markForCheck(); }, 1500);
-  }
+  // @Output() detailsClick = new EventEmitter<string[]>();
 
-  goToGroupDetail(): void {
-    this.detailsClick.emit();
-  }
-
-  get runChangeDetection(): boolean {
-    console.log('Checking the view');
-    return true;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    for (const prop of Object.keys(changes)) {
-      console.log(changes[prop]);
-    }
-  }
-
-
+  // goToGroupDetail(): void {
+  //   this.detailsClick.emit();
+  // }
 }

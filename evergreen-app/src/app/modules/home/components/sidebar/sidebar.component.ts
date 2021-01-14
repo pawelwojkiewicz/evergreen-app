@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { routePath } from '@core/constans/route.path';
+import { NotificationsService } from '@core/services/notifications.service';
+import { SidebarService } from '@core/services/sidebar.service';
 import { Observable, Subscription } from 'rxjs';
-import { routePath } from 'src/app/core/constans/route.path';
-import { NotificationsService } from 'src/app/core/services/notifications.service';
-import { SidebarService } from 'src/app/core/services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',

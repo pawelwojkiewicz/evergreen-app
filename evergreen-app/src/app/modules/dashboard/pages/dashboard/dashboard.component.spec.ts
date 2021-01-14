@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { DashboardComponent } from './dashboard.component';
-import { RouterModule } from '@angular/router';
-import { PatientsService } from 'src/app/core/services/patients.service';
-import { GroupsService } from 'src/app/core/services/groups.service';
-import { Patient } from 'src/app/shared/types/patient.type';
-import { Group } from 'src/app/shared/types/group.type';
 import { Location } from '@angular/common';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { GroupsService } from '@core/services/groups.service';
+import { PatientsService } from '@core/services/patients.service';
+import { Group } from '@shared/types/group.type';
+import { Patient } from '@shared/types/patient.type';
+import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { PatientCardComponent } from './patient-card.component';
-import { Patient } from 'src/app/shared/types/patient.type';
+
 
 describe('PatientCardComponent', () => {
   let component: PatientCardComponent;
