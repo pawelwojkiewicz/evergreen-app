@@ -21,6 +21,9 @@
             <app-validation [control]="signForm.get('email')">
               <span email
                     class="invalid-feedback">Please put correct e-mail. </span>
+              <span forbiddenLogin
+                    class="invalid-feedback"> Sorry,
+                {{signForm.get('email').errors?.forbiddenLogin}} is forbidden!</span>
             </app-validation>
           </div>
           <div class="form-group">
@@ -34,6 +37,9 @@
             <app-validation [control]="signForm.get('password')">
               <span minlength
                     class="invalid-feedback"> The password is too short. </span>
+              <span wrongCompany
+                    class="invalid-feedback"> Sorry,
+                {{signForm.get('password').errors?.wrongCompany}} is wrong!</span>
             </app-validation>
           </div>
           <button type="submit"

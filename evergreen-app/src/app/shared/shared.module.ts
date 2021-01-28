@@ -21,7 +21,7 @@ const shared = [
   MyngifDirective,
   BackgroundDirective,
   ConfirmClickDirective,
-  ConfirmComponentComponent
+  ConfirmComponentComponent,
 ];
 
 @NgModule({
@@ -33,10 +33,10 @@ const shared = [
   exports: [
     MaterialModule,
     FormsModule,
-    [...shared],
+    ...shared,
   ],
   declarations: [
-    [...shared],
+    ...shared,
   ]
 })
 export class SharedModule { }

@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routePath } from '@core/constans/route.path';
 import { AuthService } from '@core/services/auth.service';
+import { forbiddenLoginValidator } from '@shared/directives/login-validation.directive';
+import { PasswordValidation } from '@shared/directives/password-validation.directive';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +21,31 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signForm = new FormGroup({
-      email: new FormControl(null, [Validators.email, Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(8)])
+      email: new FormControl(
+        null,
+        [
+          Validators.email,
+          Validators.required,
+          forbiddenLoginValidator('obj@wp.pl')
+        ]
+      ),
+      password: new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.minLength(8),
+          PasswordValidation.objectivity
+        ]
+      )
     });
+
   }
 
+
+
   onSubmit(): void {
+    console.log(this.signForm.get('email').errors);
+    console.log(this.signForm.get('password').errors);
     if (
       this.signForm.valid &&
       this.signForm.get('password').value === 'objectivity'
