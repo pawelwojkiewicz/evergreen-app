@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routePath } from '@core/constans/route.path';
 import { AuthService } from '@core/services/auth.service';
@@ -17,10 +17,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.signForm = new FormGroup({
+    this.signForm = this.formBuilder.group({
       email: new FormControl(
         null,
         [
@@ -36,16 +37,14 @@ export class LoginComponent implements OnInit {
           Validators.minLength(8),
           PasswordValidation.objectivity
         ]
-      )
+      ),
+      color: [''],
     });
-
   }
 
 
 
   onSubmit(): void {
-    console.log(this.signForm.get('email').errors);
-    console.log(this.signForm.get('password').errors);
     if (
       this.signForm.valid &&
       this.signForm.get('password').value === 'objectivity'

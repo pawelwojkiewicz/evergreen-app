@@ -42,6 +42,9 @@
                 {{signForm.get('password').errors?.wrongCompany}} is wrong!</span>
             </app-validation>
           </div>
+          <div class="form-field"> Color: <app-color-picker formControlName="color">
+            </app-color-picker>
+          </div>
           <button type="submit"
                   class="btn btn-primary login__btn w-100"> Log in </button>
         </form>
