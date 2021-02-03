@@ -1,4 +1,4 @@
-import { PasswordValidation } from './password-validation.directive';
+import { PasswordValidation } from './password-validator';
 
 describe('PasswordDirectiveDirective', () => {
   it('should create an instance', () => {

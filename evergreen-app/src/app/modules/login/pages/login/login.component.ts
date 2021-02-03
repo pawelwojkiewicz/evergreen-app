@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { routePath } from '@core/constans/route.path';
 import { AuthService } from '@core/services/auth.service';
-import { forbiddenLoginValidator } from '@shared/directives/login-validation.directive';
-import { PasswordValidation } from '@shared/directives/password-validation.directive';
+import { forbiddenLoginValidator } from '@shared/components/validators/login-validator';
+import { PasswordValidation } from '@shared/components/validators/password-validator';
 
 @Component({
   selector: 'app-login',

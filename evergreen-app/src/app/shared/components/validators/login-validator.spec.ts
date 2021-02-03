@@ -1,4 +1,4 @@
-import { LoginValidationDirective } from './login-validation.directive';
+import { LoginValidationDirective } from './login-validator';
 
 describe('LoginValidationDirective', () => {
   it('should create an instance', () => {
