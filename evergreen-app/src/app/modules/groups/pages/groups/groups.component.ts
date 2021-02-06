@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { routePath } from '@core/constans/route.path';
@@ -6,14 +6,14 @@ import { FilterService } from '@core/services/filter.service';
 import { GroupsService } from '@core/services/groups.service';
 import { SelectedFilters } from '@shared/types/filter.type';
 import { Group } from '@shared/types/group.type';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss']
 })
-export class GroupsComponent implements OnInit {
+export class GroupsComponent implements OnInit, OnDestroy {
   groups$: Observable<Group[]> = this.groupService.getFilteredGroups();
   selectedFilters$: Observable<SelectedFilters[]> = this.filterService.getSelectedFilters();
   filterForm: FormGroup;
@@ -29,6 +29,8 @@ export class GroupsComponent implements OnInit {
   ];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
+  filterServiceSubscription: Subscription;
+
   constructor(
     private groupService: GroupsService,
     private filterService: FilterService,
@@ -41,9 +43,10 @@ export class GroupsComponent implements OnInit {
       age: new FormControl(null)
     });
 
-    this.filterService.filter$.subscribe(item => {
-      this.filterForm.patchValue(item);
-    });
+    this.filterServiceSubscription = this.filterService.loadStoragedFilters()
+      .subscribe(item => {
+        this.filterForm.patchValue(item);
+      });
   }
 
   onSubmit(): void {
@@ -52,7 +55,8 @@ export class GroupsComponent implements OnInit {
   goToGroupDetail(id: number): void {
     this.router.navigate([...this.groupsRoute, id]);
   }
+
+  ngOnDestroy(): void {
+    this.filterServiceSubscription.unsubscribe();
+  }
 }
-
-
-// usubscribe dla filterService!!!!

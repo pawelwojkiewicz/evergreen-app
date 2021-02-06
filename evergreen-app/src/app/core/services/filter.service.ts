@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Filters, SelectedFilters } from '@shared/types/filter.type';
 import { LocalStorageService } from 'ngx-webstorage';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  private filterSubject = new BehaviorSubject<Filters>({ gender: '', age: [] });
-  filter$ = this.filterSubject.asObservable();
-
+  // BehaviorSubject uzywamy gdy nie mamy na poczatku zadnej wartości
+  // private filterSubject = new BehaviorSubject<Filters>({ gender: '', age: [] });
+  // filter$ = this.filterSubject.asObservable();
   constructor(private localSt: LocalStorageService) { }
 
-
   updateFilter(filters: Partial<Filters>): void {
-    const newState = { ...this.filterSubject.value, ...filters };
-    this.filterSubject.next(newState);
-    this.localSt.store('filter', newState);
+    const retrivedFilters = this.localSt.retrieve('filters');
+    const newState = { ...retrivedFilters, ...filters };
+    this.localSt.store('filters', newState);
+  }
+
+  loadStoragedFilters(): Observable<Filters> {
+    let filters: Filters;
+    if (this.localSt.retrieve('filters') == null) {
+      filters = { gender: '', age: [] };
+    } else {
+      filters = this.localSt.retrieve('filters');
+    }
+    return this.localSt.observe('filters')
+      .pipe(startWith(filters));
   }
 
   getSelectedFilters(): Observable<SelectedFilters[]> {
-    const storageFilters = this.localSt.retrieve('filter');
-    this.filterSubject.next(storageFilters);
-    return this.filterSubject.pipe(map(item => {
+    return this.loadStoragedFilters().pipe(map(item => {
       const selectedFilters: SelectedFilters[] = [];
       if (item.age && item.age.length) {
         const age = `${item.age[0]}-${item.age[1]} years old`;

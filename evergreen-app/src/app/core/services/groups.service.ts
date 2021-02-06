@@ -25,7 +25,7 @@ export class GroupsService {
   }
 
   getFilteredGroups(): Observable<Group[]> {
-    return this.filterService.filter$.pipe(
+    return this.filterService.loadStoragedFilters().pipe(
       switchMap(currentFilters => {
         return this.fetchGroups().pipe(
           map(groups => {
