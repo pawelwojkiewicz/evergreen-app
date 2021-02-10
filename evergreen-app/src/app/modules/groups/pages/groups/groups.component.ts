@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { routePath } from '@core/constans/route.path';
 import { FilterService } from '@core/services/filter.service';
 import { GroupsService } from '@core/services/groups.service';
-import { SelectedFilters } from '@shared/types/filter.type';
+import { Age, SelectedFilters } from '@shared/types/filter.type';
 import { Group } from '@shared/types/group.type';
 import { Observable, Subscription } from 'rxjs';
 
@@ -27,6 +27,7 @@ export class GroupsComponent implements OnInit, OnDestroy {
     { value: '19-50', range: [19, 50] },
     { value: '51-70', range: [51, 70] }
   ];
+  storagedAge: Age = [];
   groupsRoute = ['/', routePath.home, routePath.groups];
 
   filterServiceSubscription: Subscription;
@@ -45,6 +46,7 @@ export class GroupsComponent implements OnInit, OnDestroy {
 
     this.filterServiceSubscription = this.filterService.loadStoragedFilters()
       .subscribe(item => {
+        this.storagedAge = item.age;
         this.filterForm.patchValue(item);
       });
   }

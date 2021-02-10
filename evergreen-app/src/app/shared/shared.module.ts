@@ -9,6 +9,7 @@ import { BackgroundDirective } from './directives/background.directive';
 import { ConfirmClickDirective } from './directives/confirm-click.directive';
 import { MyngifDirective } from './directives/myngif.directive';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { LoadingPipe } from './pipes/loading.pipe';
 import { ToSlugPipe } from './pipes/to-slug.pipe';
 
 
@@ -16,12 +17,13 @@ import { ToSlugPipe } from './pipes/to-slug.pipe';
 const shared = [
   ErrorDialogComponent,
   LoadingDialogComponent,
+  ConfirmComponentComponent,
   ToSlugPipe,
   EllipsisPipe,
+  LoadingPipe,
   MyngifDirective,
   BackgroundDirective,
   ConfirmClickDirective,
-  ConfirmComponentComponent,
 ];
 
 @NgModule({
@@ -37,6 +39,7 @@ const shared = [
   ],
   declarations: [
     ...shared,
+
   ]
 })
 export class SharedModule { }
