@@ -35,18 +35,10 @@ const shared = [
   exports: [
     MaterialModule,
     FormsModule,
-<<<<<<< HEAD
     shared,
   ],
   declarations: [
     shared,
-=======
-    ...shared,
-  ],
-  declarations: [
-    ...shared,
-
->>>>>>> 07ec142fb34d6307db22036d93d72afb3d18afc6
   ]
 })
 export class SharedModule { }
