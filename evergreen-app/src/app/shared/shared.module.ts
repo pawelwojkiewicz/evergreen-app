@@ -5,7 +5,6 @@ import { MaterialModule } from '../modules/material/material.module';
 import { ConfirmComponentComponent } from './components/confirm-component/confirm-component.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { LoadingDialogComponent } from './components/loading-dialog/loading-dialog.component';
-import { BackgroundDirective } from './directives/background.directive';
 import { ConfirmClickDirective } from './directives/confirm-click.directive';
 import { MyngifDirective } from './directives/myngif.directive';
 import { EllipsisPipe } from './pipes/ellipsis.pipe';
@@ -22,7 +21,6 @@ const shared = [
   EllipsisPipe,
   LoadingPipe,
   MyngifDirective,
-  BackgroundDirective,
   ConfirmClickDirective,
 ];
 

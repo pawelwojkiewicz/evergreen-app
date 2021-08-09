@@ -1,26 +1,18 @@
 <section class="section">
   <div class="container-fluid">
     <h1 class="h--display-2 section__title">Errors</h1>
-    <button (click)="throwError()"
-            class="btn btn-secondary mr-3"> Throw error in dialog </button>
-    <button (click)="failingRequest()"
-            class="btn btn-secondary mr-3"> Throw server error in dialog </button>
-    <button (click)="successfulRequest()"
-            class="btn btn-secondary"> Sucessfull request </button>
+    <button (click)="throwError()" class="btn btn-secondary mr-3"> Throw error in dialog </button>
+    <button (click)="failingRequest()" class="btn btn-secondary mr-3"> Throw server error in dialog </button>
+    <button (click)="successfulRequest()" class="btn btn-secondary"> Sucessfull request </button>
     <h1 class="h--display-2 section__title mt-5">Pipes</h1>
     <form>
       <div class="mb-3">
         <div class="row">
           <div class="col-12 col-md-3">
-            <label for="exampleText"
-                   class="form-label mb-3">Transform text to slug, for example: "Objec'tivity ą ś ♥"
+            <label for="exampleText" class="form-label mb-3">Transform text to slug, for example: "Objec'tivity ą ś ♥"
             </label>
-            <input type="text"
-                   id="exampleText"
-                   [(ngModel)]="text"
-                   name="exampleText"
-                   class="form-control"
-                   placeholder="Write some text....">
+            <input type="text" id="exampleText" [(ngModel)]="text" name="exampleText" class="form-control"
+              placeholder="Write some text....">
           </div>
         </div>
       </div>
@@ -29,16 +21,10 @@
     </form>
     <p class="mb-3">{{trucnatedText | ellipsis: 20}}</p>
     <h1 class="h--display-2 section__title mt-5">Directives</h1>
-    <div *appMyngif="condition"
-         class="square mb-3"> This is square </div>
-    <button class="btn btn-primary mb-3"
-            (click)="condition = !condition">Hide square</button>
-    <p class="mb-3"
-       appBackground
-       [clickedColor]="'yellow'"
-       [clickedTransform]="'translateX(100px)'">Udemy approach to style element with directive </p>
-    <button (appConfirmClick)="makeSomeLogic()"
-            [confirmMessage]="confirmMessage"
-            class="btn btn-primary">Confirm button</button>
+    <div *appMyngif="condition" class="square mb-3"> This is square </div>
+    <button class="btn btn-primary mb-3" (click)="condition = !condition">Hide square</button>
+    <p class="mb-3">Udemy approach to style element with directive </p>
+    <button (appConfirmClick)="makeSomeLogic()" [confirmMessage]="confirmMessage" class="btn btn-primary">Confirm
+      button</button>
   </div>
 </section>
