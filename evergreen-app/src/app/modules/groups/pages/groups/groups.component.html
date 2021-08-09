@@ -19,7 +19,8 @@
         <div class="groups__filters-item groups__filters-item--column">
           <mat-radio-group formControlName="age"
                            aria-label="Select an option">
-            <mat-radio-button *ngFor="let age of ages"
+            <mat-radio-button *ngFor="let age of ages; let i = index"
+                              [checked]="age.range[0] === storagedAge[0]"
                               [value]="age.range">{{age.value}} years old</mat-radio-button>
           </mat-radio-group>
         </div>
@@ -37,9 +38,14 @@
               class="groups__selected-filters-icon material-icons"> close </span>
       </li>
     </ul>
-    <app-group-item (click)="goToGroupDetail(group.id)"
-                    [group]="group"
-                    *ngFor="let group of (groups$ | async)">
-    </app-group-item>
+    <div *ngIf="groups$ | async as group; else spinner">
+      <app-group-item (click)="goToGroupDetail(group.id)"
+                      [group]="group"
+                      *ngFor="let group of (groups$ | async)">
+      </app-group-item>
+    </div>
+    <ng-template #spinner>
+      <mat-spinner></mat-spinner>
+    </ng-template>
   </div>
 </section>

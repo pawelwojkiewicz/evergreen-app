@@ -23,7 +23,6 @@ export class RoleGuardService implements CanActivate {
       alert('You dont have permission to enter here');
       return false;
     }
-    console.log(this.authService.role, expectedRole);
     return true;
   }
 }

@@ -1,4 +1,8 @@
-<ng-content *ngIf="control.invalid && control.touched || control.hasError('minlength')"
+<ng-content *ngIf="control.invalid && (control.touched || control.hasError('minlength'))"
             select="[minlength]"></ng-content>
-<ng-content *ngIf="control.invalid && control.touched || control.hasError('email')"
+<ng-content *ngIf="control.invalid && (control.touched || control.hasError('email'))"
             select="[email]"></ng-content>
+<ng-content *ngIf="control.errors?.wrongCompany && (control.touched || control.dirty)"
+            select="[wrongCompany]"></ng-content>
+<ng-content *ngIf="control.errors?.forbiddenLogin && (control.touched || control.dirty)"
+            select="[forbiddenLogin]"></ng-content>
