@@ -6,7 +6,7 @@
         <h2 class="h--display-1 section__subtitle">Last visited patients </h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
           <app-patient-card [patient]="patient"
-                            *ngFor="let patient of patients | slice:0:4 ">
+                            *ngFor="let patient of patients | slice:0:2 ">
           </app-patient-card>
         </div>
         <div class="d-flex w-100 align-items-center justify-content-md-end mt-5">
