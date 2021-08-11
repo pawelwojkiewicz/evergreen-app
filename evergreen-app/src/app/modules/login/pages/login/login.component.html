@@ -10,8 +10,8 @@
             <input type="email" class="form-control w-100" id="email" aria-describedby="emailHelp"
               placeholder="Enter email address" formControlName="email" required />
             <app-validation [control]="signForm.get('email')">
-              <span email class="invalid-feedback">Please put correct e-mail. </span>
-              <span forbiddenLogin class="invalid-feedback"> Sorry,
+              <span email id="emailError" class="invalid-feedback">Please put correct e-mail. </span>
+              <span forbiddenLogin id="forbiddenEmailError" class="invalid-feedback"> Sorry,
                 {{signForm.get('email').errors?.forbiddenLogin}} is forbidden!</span>
             </app-validation>
           </div>
@@ -20,8 +20,8 @@
             <input type="password" class="form-control w-100" id="password" placeholder="Enter password"
               formControlName="password" required />
             <app-validation [control]="signForm.get('password')">
-              <span minlength class="invalid-feedback"> The password is too short. </span>
-              <span wrongCompany class="invalid-feedback"> Sorry,
+              <span minlength id="minLengthError" class="invalid-feedback"> The password is too short. </span>
+              <span wrongCompany id="wrongCompanyError" class="invalid-feedback"> Sorry,
                 {{signForm.get('password').errors?.wrongCompany}} is wrong!</span>
             </app-validation>
           </div>

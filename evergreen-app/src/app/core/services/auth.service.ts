@@ -7,6 +7,7 @@ export class AuthService {
   // Fake authentication
 
   loggedIn = true;
+  role = 'admin';
 
   isAuthenticated(): any {
     const promise = new Promise(
