@@ -21,11 +21,17 @@ export class FilterService {
 
   loadStoragedFilters(): Observable<Filters> {
     let filters: Filters;
+
     if (this.localSt.retrieve('filters') == null) {
       filters = { gender: '', age: [] };
+      console.log(filters);
     } else {
       filters = this.localSt.retrieve('filters');
+      console.log(filters);
     }
+
+    console.log(this.localSt.observe('filters')
+    .pipe(startWith(filters)));
     return this.localSt.observe('filters')
       .pipe(startWith(filters));
   }

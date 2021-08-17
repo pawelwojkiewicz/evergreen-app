@@ -149,6 +149,8 @@
 
 //       const validationComponentDEs = fixture.debugElement.queryAll(By.directive(ValidationComponent));
 
+//       console.log(validationComponentDEs);
+
 //       signForm.controls.email.setValue('test@wp.pl');
 //       signForm.controls.password.setValue('obj');
 //       fixture.componentInstance.onSubmit();

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Group } from '@shared/types/group.type';
 import { Observable } from 'rxjs';
-import { delay, map, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { FilterService } from './filter.service';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class GroupsService {
   ) { }
 
   fetchGroups(): Observable<Group[]> {
-    return this.http.get<Group[]>('assets/groups.json').pipe(delay(500));
+    return this.http.get<Group[]>('assets/groups.json');
   }
 
   getGroup(id: number): Observable<Group> {
