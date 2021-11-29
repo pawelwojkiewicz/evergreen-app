@@ -6,7 +6,6 @@ import { PatientsService } from '@core/services/patients.service';
 import { Group } from '@shared/types/group.type';
 import { Patient } from '@shared/types/patient.type';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,10 +25,6 @@ export class DashboardComponent {
     private router: Router,
   ) {
     this.patients = this.patientsService.getPatients();
-  }
-
-  deleteGroup(): void {
-    console.log(this.groups$.pipe(map(groups => groups.find(group => group.id === 2))));
   }
 
   goToGroupDetail(id: number): void {

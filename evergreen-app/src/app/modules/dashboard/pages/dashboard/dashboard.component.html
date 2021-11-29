@@ -5,8 +5,7 @@
         <h1 class="h--display-2 section__title">Dashboard</h1>
         <h2 class="h--display-1 section__subtitle">Last visited patients </h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
-          <app-patient-card [patient]="patient"
-                            *ngFor="let patient of patients | slice:0:2 ">
+          <app-patient-card [patient]="patient" *ngFor="let patient of patients | slice:0:2 ">
           </app-patient-card>
         </div>
         <div class="d-flex w-100 align-items-center justify-content-md-end mt-5">
@@ -17,16 +16,12 @@
         </div>
         <h2 class="h--display-1 section__subtitle mt-5">Last groups</h2>
         <div class="d-flex flex-wrap justify-content-between justify-content-md-start">
-          <app-group [group]="group"
-                     (click)="goToGroupDetail(group.id)"
-                     *ngFor="let group of (groups$ | async) | slice:0:4"></app-group>
+          <app-group [group]="group" (click)="goToGroupDetail(group.id)"
+            *ngFor="let group of (groups$ | async) | slice:0:4"></app-group>
         </div>
         <div class="d-flex justify-content-md-end mt-5">
-          <button (click)="deleteGroup()"
-                  class="btn btn-white">Delete Robert Family group</button>
-          <a [routerLink]="groupsRoute"
-             class="btn btn-secondary btn-icon ml-md-auto"> See all groups <i
-               class="fas fa-arrow-right"></i>
+          <a [routerLink]="groupsRoute" class="btn btn-secondary btn-icon ml-md-auto"> See all groups <i
+              class="fas fa-arrow-right"></i>
           </a>
         </div>
       </div>
